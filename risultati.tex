@@ -1,0 +1,78 @@
+\chapter{Raccolta e analisi dei risultati}
+\label{cap:risultati}
+
+Ovviamente è possibile fare molte misurazioni e test di varia natura sugli scenari realizzati con EMANE. Se siamo interessati a  delle diagnostiche sui vari strati oppure a delle tabelle riassuntive di alcuni eventi si può tranquillamente utilizzare \textit{EMANESH (EMANE SHell)} \cite{EMANESH} compreso nel pacchetto EMANE. \\
+EMANESH fornisce l'accesso alle configurazioni di emulazione, statistiche, tabelle statistiche e controllo dei log. Per utilizzare EMANESH basta avviare lo scenario e dare il seguente comando:
+\begin{verbatim}
+emanesh hostname
+\end{verbatim}
+\noindent
+dove \textit{hostname} è il nome dato al container. A questo punto si possono vedere i vari comandi disponibili tramite \textit{help}. Di seguito si fa un esempio di alcune tabelle che è possibile visionare allo strato MAC (nulla ci vieta di visionare quelle degli altri strati) con EMANESH.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{emanesh_mac.png}
+	\caption{Esempio Emanesh Tabelle Mac Layer}
+	\label{fig:emanesh_mac}
+\end{figure}
+
+A scopo illustrativo si può vedere una delle tabelle statistiche del nodo-8 presenti in Figura \ref{fig:emanesh_mac}. Diamo il seguente comando una volta dentro la console \textit{emanesh} del nodo-8:
+\begin{verbatim}
+get table 8 mac BroadcastPacketAcceptTable0
+\end{verbatim}
+Si avrà un risultato simile al seguente:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{emanesh_broadcast.png}
+	\caption{Esempio tabella statistica node-8 con Emanesh}
+	\label{fig:emanesh_broadcast}
+\end{figure}
+
+Questo è un piccolo esempio di come utilizzare e cosa poter visionare impiegando \textit{EMANESH}. Ovviamente abbiamo molti più comandi a disposizione e possiamo analizzare tutti i layer che, durante la fase di configurazione, abbiamo inserito all'interno della definizione dei NEMs (Appendice \ref{app:conf_nem}). \\
+
+Un altro utilizzo che si può fare di \textit{EMANESH} è il settaggio a run-time di diversi parametri del nostro scenario (ovviamente si possono cambiare solamente alcune tipologie di impostazioni che non vanno ad intaccare le ``fondamenta'' dell'emulazione) tra cui il livello dei file di log di ogni nodo. Si fa un esempio di tale comando:
+\begin{verbatim}
+loglevel 4
+\end{verbatim}
+dove $4$ è il livello più alto (DEBUG). Questi file di log sono molto precisi e puntuali su cosa accade internamente allo scenario e quindi possono, anch'essi, essere utilizzati per effettuare misurazioni o raccolta dati. Si presenta una riga di un file di log nella figura che segue (opportunamente troncato per motivi di spazio): 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{log_file.png}
+	\caption{Esempio file di log (troncato)}
+	\label{fig:log_file}
+\end{figure}
+
+Quello che è stato detto sinora su EMANESH e i file di log ha valenza generale, ossia, per tutti gli scenari che si possono creare. Per le misurazioni che ci siamo proposti di fare nel presente elaborato EMANE non mette a disposizione nulla che fornisca un accesso diretto e semplice alle informazioni di cui abbiamo bisogno. Il nostro scopo è quello di raccogliere tutte le misurazioni della potenza di ricezione in dB (\textit{power} in Figura \ref{fig:log_file}) fatte dal nodo $8$ rispetto gli altri nodi durante la sua camminata. Tali informazioni sono presenti sul file di log ma, apparentemente, senza un'ordine logico. Per questo motivo si è creato uno script \textit{php} (Appendice \ref{app:script_raccolta}) che attraverso l'utilizzo di \textit{Espressioni Regolari (REGEX)} è in grado di estrapolare le informazioni da noi volute e scriverle all'interno di un file \textit{.csv} che poi dovrà essere graficato. I grafici di entrambi gli scenari sono riportati di seguito:
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{rxpower_freespace.png}
+	\caption{Potenza di ricezione nodo-8 (freespace)}
+	\label{fig:rxpower_freespace}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{rxpower_2ray.png}
+	\caption{Potenza di ricezione nodo-8 (2ray)}
+	\label{fig:rxpower_2ray}
+\end{figure}
+
+Dalle precedenti figure si può vedere che l'andamento delle potenze dei segnali verso ciascun nodo sono proprio come ce le aspettavamo in quanto è normale che il primo nodo a raggiungere il picco dopo $100$ secondi sia proprio nodo $1$. Possiamo inoltre notare che i massimi di ricezione di ogni nodo sono distanziati di circa $50$ secondi. Se ricordiamo che il nodo $8$ procede ad una velocità di $1.2$ m/s e la distanza tra due nodi è di $60$ metri la cosa non dovrebbe stupirci in quanto per percorrere i $60$ metri che separano due nodi il nodo $8$ impiega proprio $50$ secondi. \\
+Inoltre è importante ricordare i discorsi fatti nel Capitolo \ref{cap:costruzione_scenario} in Sezione \ref{section:phy_layer} dove si precisava che i link potrebbero essere anche abbattuti anticipatamente da interventi esterni ad EMANE come un protocollo di routing. Per questi motivi si nota nelle emulazioni che i collegamenti cadono prima di raggiungere il valore \textit{rx Sensitivity}. Nel nostro caso questo accade in quanto il protocollo di routing \textit{OLSR} arrivato ad una soglia di degradazione del link significativa decide di staccarlo. Il parametro sul quale OLSR si basa per prendere tali decisioni viene chiamato \textit{ETX} \cite{ETX}. L'ETX non è altro che il numero di volte che un pacchetto deve essere spedito affinché arrivi al destinatario integro. Ovviamente il valore ideale per questo parametro è $1$ che starebbe a significare che ogni pacchetto inviato arriva con successo a destinazione. Un valore sotto l'unità non avrebbe senso  in quanto almeno una volta il pacchetto deve essere inviato. Un valore di $2$  già non è buono in quanto sta ad indicare un tasso di fallimento del $50$\% sul link. Di seguito si mostrano i grafici dell'ETX di entrambi gli scenari. Anche in questo caso si è fatto ricorso allo script \textit{php} in Appendice \ref{app:script_raccolta} per la raccolta di tali misurazioni dal file di \textit{log}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{etx_freespace.png}
+	\caption{Etx del Nodo 8 rispetto agli altri nodi (freespace)}
+	\label{fig:etx_freespace}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{etx_2ray.png}
+	\caption{Etx del Nodo 8 rispetto agli altri nodi (2-ray)}
+	\label{fig:etx_2ray}
+\end{figure}

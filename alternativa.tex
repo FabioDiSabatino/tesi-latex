@@ -1,0 +1,121 @@
+\chapter{Realizzazione di uno Scenario}
+
+Ora vedremo come i principi enunciati nel Capitolo \ref{cap:costruzione_scenario} vengono applicati facendo ricorso a degli scenari da me realizzati. \\
+Si analizzeranno anche le istruzioni da impartire per avviare tutte le componenti necessarie ad una corretta esecuzione. Infine verranno mostrati alcuni Screenshot ed i risultati ottenuti dalle due emulazioni. Di seguito si presentano i due scenari.
+
+\section{Gli scenari}
+
+Si sono realizzati due scenari al fine di mostrare come tutti i punti descritti nel Capitolo \ref{cap:costruzione_scenario} portino effettivamente alla realizzazione di emulazioni perfettamente funzionanti. \\
+Tutti i file di configurazione creati per dar vita a questi due esempi sono stati inseriti in Appendice \ref{app:a}. \\
+Gli scenari proposti comprendono $8$ NEMs ($7$ in fila indiana fermi nella loro posizione iniziale e un ottavo nodo che cammina di fianco ad essi).QUANDO SI AVRANNO QUI SI POSSONO INSERIRE LE DISTANZE PRECISE TRA OGNI NODO E LA VELOCITA DELLA CAMMINATA. I $7$ nodi in fila vedono solamente i loro vicini stretti ($1$ vede solo $2$, $2$ vede $1$ e $3$, ..., $7$ vede solo $6$). L'ottavo cammina parallelamente a loro connettendosi di volta in volta solo e solamente con uno di essi (quello perpendicolare) fino ad arrivare a fine corsa staccandosi da tutti quanti. Ogni volta che si stabilisce una connessione (per esempio il nodo $8$ si connette con il nodo $2$ lasciando il numero $1$) la camminata dell'ottavo nodo si ferma per un tempo di $120$ secondi (ricordiamo che si svolge tutto in tempo reale). Quest'intervallo si è introdotto al fine di effettuare le misure necessarie e le dovute verifiche. \\
+Di seguito si propone una rappresentazione grafica di quanto detto.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{descrizione_scenario.png}
+	\caption{Scenario delle Emulazioni Realizzate}
+	\label{fig:descrizione_scenario}
+\end{figure}
+
+La differenza fondamentale che c'è tra i due esempi qui riportati risiede nel modello di propagazione (\textit{propagationmodel} \cite{propagationmodel}) utilizzato. Il primo scenario utilizza il modello di propagazione \textbf{freespace} mentre il secondo il \textbf{2-ray}. L'implementazione di EMANE di tali modelli segue un algoritmo per il calcolo dei \textit{pathloss} abbastanza ``semplice''. \\
+Il \textit{freespace} segue la seguente espressione: 
+\begin{equation*}
+Pathloss[i++] = 20 log10[FSPL\cdot(\frac{FrequencyHz}{1000000})\cdot(\frac{Distance}{1000})]
+\end{equation*} 
+\noindent
+Dove \textit{FSPL} = $41.916900439033640$ è una costante definita all'interno della libreria del modello di propagazione e \textit{Distance} è la distanza in metri tra i due nodi di cui si calcola il Pathloss. \\
+A questo punto se il valore scaturito è maggiore di $0$ verrà attribuito un Pathloss pari al risultato altrimenti sarà nullo. La configurazione dello strato fisico secondo questo modello è quella in Appendice \ref{app:freespace}. \\
+
+Il \textit{2-ray} invece segue un'altra espressione:
+\begin{equation*}
+Pathloss=20 log10(\frac{Distance^2}{this.node.altitude \cdot remote.node.altitude})
+\end{equation*} 
+\noindent
+Anche qui se il risultato è minore di $0$ si pone un valore nullo altrimenti si pone il \textit{pathloss} uguale al valore risultante. \\
+Questo modello di propagazione tiene conto anche dell'altitudine dei due nodi in quanto il secondo raggio viene riflesso a terra.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=5]{2ray.png}
+	\caption{Modello di propagazione 2ray}
+	\label{fig:2ray}
+\end{figure}
+\noindent
+Lo strato fisico derivante dal modello di propagazione \textit{2-ray} è consultabile in Appendice \ref{app:2-ray}. \\
+
+\section{Avvio dell'Emulazione}
+
+Arrivati a questo punto abbiamo tutto pronto per far partire i nostri due scenari esempio. Si procede quindi ad una spiegazione di come avviare tutti gli $8$ containers e come lanciare all'interno di essi EMANE e tutti i suoi tools ausiliari. \\
+Sono stati creati degli \textit{script} che rendono automatico l'avvio dell'emulazione (Appendice \ref{app:script_avvio}) e anche per il loro arresto (Appendice \ref{app:script_arresto}).
+
+\subsection{Fase Preliminare}
+
+Prima di poter iniziare effettivamente si ha bisogno di installare e soddisfare tutte le dipendenze in modo da poter eseguire tutti i tools in tranquillità. A tal fine si consiglia di seguire la piccola guida presente su questo link \url{https://github.com/adjacentlink/emane-tutorial/wiki/Install}.
+
+\subsection{Avviare gli LXC Containers}
+
+Per gli scenari esempio si è scelto di utilizzare dei containers ``applicazione'' per poter sfruttare il loro veloce avvio e soprattutto perché non c'è bisogno di dover creare anticipatamente il container. Con questo approccio una volta terminata l'emulazione, quindi arrestati i vari container, non rimane traccia sul \textit{File System} della loro esistenza. Il comando base da eseguire per lanciare un container è:
+\begin{verbatim}
+lxc-execute {-n name} [-f config-file] [-- command]
+\end{verbatim}
+\noindent
+Dove \textit{name}, \textit{config-file} e \textit{command} sono rispettivamente il nome che si vuole dare al container, il file di configurazione XML (Appendice \ref{app:conf_lxc_nodo1}) e i comandi da eseguire all'interno del container. \\
+Se non si sta utilizzando lo script automatico si consiglia di inserire nel campo \textit{command} l'avvio del demone ssh (\textit{sshd}) in modo da avere accesso tramite terminale al container.
+
+\subsection{Comandi da eseguire internamente ai Container}
+
+Una volta approntati tutti i container del nostro scenario si deve procedere all'avvio di tutti i servizi di cui abbiamo bisogno. Le operazioni di seguito indicate dovranno essere eseguite su ogni container dello scenario. \\
+
+Come prima cosa, ovviamente, si lancia EMANE dandogli in input il file di configurazione NEM Platform Server (Appendice \ref{app:platform_server}) e quindi si avrà:
+\begin{verbatim}
+emane config-file -r -d -l 4 -f log-file
+\end{verbatim}
+\noindent
+Dove \textit{-r} sta ad indicare priorità \textit{realtime} per noi essenziale in quando vogliamo che tutto sia emulato in tempo reale, \textit{-d} verrà eseguito in background e \textit{-l} indica l'accuratezza dei file di log. \\
+A questo punto c'è già connettività tra i vari nodi della rete e quindi potremmo anche provare ad effettuare dei \textit{ping} diagnostici. Si può inoltre notare che è salita l'interfaccia \textit{emane0}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{ifconfig.png}
+	\caption{Risultato ifconfig sul nodo-1 (troncato)}
+	\label{fig:ifconfig}
+\end{figure} 
+
+A questo punto si lancia il demone degli eventi su ogni nodo della rete attraverso il comando:
+\begin{verbatim}
+emaneeventd config-file -r -d -l 4 -f log-file
+\end{verbatim}
+\noindent
+Tutti i parametri da inserire hanno lo stesso significato di quelli precedenti. L'unica differenza sta nel fatto che, ovviamente, il file di configurazione è relativo all'Event Daemon (Appendice \ref{app:event_daemon}. \\
+
+Un'altra componente molto importante per la riuscita dello scenario è sicuramente il \textit{ricevitore gps}. Il comando da impartire affinchè il demone \textit{gpsd} si avvii è il seguente:
+
+\begin{verbatim}
+gpsd -P pid-file -G -n -b file-read-only
+\end{verbatim}
+\noindent
+INSERIRE QUI IL SIGNIFICATO DI QUESTI PARAMETRI.
+
+Infine si procede all'avvio del protocollo di routing OLSR sempre tramite il suo demone (\textit{olsrd}). Il comando da impartire per eseguire ciò è:
+\begin{verbatim}
+olsrd -f config-file -d 3 > log-file
+\end{verbatim}
+\noindent
+Dove \textit{config-file} è il file di configurazione presentato in Appendice \ref{app:routing}, \textit{-d $3$} indica il livello di \textit{debug} voluto. L'ultima parte del comando sta ad indicare il ridirezionamento sul file di log dell'output prodotto dal demone. \\
+
+\subsection{Fase Finale}
+
+Una volta eseguito quanto sopra tutti i nostri container sono pronti a ricevere gli eventi caratterizzanti il nostro scenario. Tornando sulla macchina host si deve eseguire il tool \textit{emaneeventservice} al fine di pubblicare gli eventi già dichiarati nel nostro file \textit{.eel} (Appendice \ref{app:eel_file}). Quindi procediamo impartendo quanto segue alla macchina host:
+\begin{verbatim}
+emaneeventservice config-file -l 3 > log-file
+\end{verbatim}
+\noindent
+Dove \textit{config-file} è il file di configurazione già presentato in Appendice \ref{app:emaneeventservice}. Come prima \textit{-l 3} indica il livello di log desiderato da girare sul \textit{log-file}. \\
+Una volta dato il seguente comando lo scenario vero e proprio ha inizio e si inizieranno a vedere le posizioni GPS da noi impostate e tutto il resto degli eventi programmati nel file \textit{.eel}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{scenario_funzionante.png}
+	\caption{Screenshot Emulazione}
+	\label{fig:scenario_funzionante}
+\end{figure} 

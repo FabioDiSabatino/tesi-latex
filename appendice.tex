@@ -1,0 +1,685 @@
+\appendix
+\chapter{Configurazioni generali scenari}
+\label{app:a}
+
+
+\section{1}
+\label{app:conf_lxc_nodo1}
+
+\lstset{language=BASH}
+\begin{lstlisting}
+lxc.utsname=node-1
+lxc.network.type=veth
+lxc.network.name=eth1
+lxc.network.flags=up
+lxc.network.link=emanenode0
+lxc.network.hwaddr=02:00:01:01:00:01
+lxc.network.ipv4=10.99.0.1/24
+lxc.network.veth.pair=veth1.1
+
+lxc.network.type=veth
+lxc.network.name=eth2
+lxc.network.hwaddr=02:00:01:02:00:01
+lxc.network.veth.pair=veth1.2
+
+lxc.network.type = empty
+lxc.network.flags=up
+
+lxc.console = none
+lxc.tty = 1
+lxc.pts = 128
+lxc.cgroup.devices.allow = a
+lxc.mount.entry = /home/emanuele/Tesi/freespace/var/lib/emanenode none defaults,bind 0 0
+
+lxc.aa_profile = unconfined
+\end{lstlisting}
+
+\section{2}
+\label{app:conf_nem}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nem SYSTEM "file:///usr/share/emane/dtd/nem.dtd">
+<nem name="NEM" type="structured">
+  <transport definition="transvirtual.xml"/>
+  <mac definition="ieee80211abgmac.xml"/>
+  <phy definition="phy.xml"/>
+  <shim definition="commeffectshim.xml"/>
+</nem>
+\end{lstlisting}
+
+\section{3}
+\label{app:virtual_transport}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE transport SYSTEM "file:///usr/share/emane/dtd/transport.dtd">
+<transport name="Tap transport" library="transvirtual">
+	<param name="flowcontrolenable" value="off"/>
+	<param name="devicepath" value="/dev/net/tun"/>
+</transport>
+\end{lstlisting}
+
+\section{Configurazione XML IEEE 802.11abg MAC Layer}
+\label{app:80211}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mac SYSTEM "file:///usr/share/emane/dtd/mac.dtd">
+<mac name="IEEE 802.11 MAC" library="ieee80211abgmaclayer">
+  <param name="mode"                  value="3"/>
+  <param name="enablepromiscuousmode" value="off"/>
+  <param name="unicastrate"           value="12"/>
+  <param name="multicastrate"         value="12"/>
+  <param name="rtsthreshold"          value="0"/>
+  <param name="pcrcurveuri"      value="ieee80211pcr.xml"/>
+  <param name="flowcontrolenable"     value="off"/>
+  <param name="flowcontroltokens"     value="10"/>
+  <param name="radiometricenable"     value="on"/>
+</mac>
+\end{lstlisting}
+
+\section{Configurazione XML PHY Layer (freespace)}
+\label{app:freespace}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE phy SYSTEM "file://usr/share/emane/dtd/phy.dtd">
+<phy name="Phy">
+    <param name="bandwidth"             value="20M"/>
+    <param name="propagationmodel"      value="freespace"/>
+    <param name="noisemode"             value="outofband"/>
+    <param name="systemnoisefigure"     value="4.0"/>
+    <param name="txpower"               value="0.0"/>
+    <param name="frequency"             value="2.347G"/>
+    <param name="subid"                 value="1"/>
+</phy>
+\end{lstlisting}
+
+\section{Configurazione XML PHY Layer (2-ray)}
+\label{app:2-ray}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE phy SYSTEM "file://usr/share/emane/dtd/phy.dtd">
+<phy name="Phy">
+    <param name="bandwidth"             value="20M"/>
+    <param name="propagationmodel"      value="2ray"/>
+    <param name="noisemode"             value="outofband"/>
+    <param name="systemnoisefigure"     value="4.0"/>
+    <param name="txpower"               value="0.0"/>
+    <param name="frequency"             value="2.347G"/>
+    <param name="subid"                 value="1"/>
+</phy>
+\end{lstlisting}
+
+\section{Comm Effect Shim Layer}
+\label{app:shim_layer}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE shim SYSTEM "file:///usr/share/emane/dtd/shim.dtd">
+<shim library="commeffectshim">
+  <param name="defaultconnectivitymode" value="off" />
+  <param name="enablepromiscuousmode" value="off" />
+</shim>
+\end{lstlisting}
+
+\section{NEM Platform Server nodo-1}
+\label{app:platform_server}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE platform SYSTEM "file:///usr/share/emane/dtd/platform.dtd">
+<platform>
+  <param name="otamanagerchannelenable" value="on"/>
+  <param name="otamanagerdevice" value="eth1"/>
+  <param name="otamanagergroup" value="224.1.2.8:45702"/>
+  <param name="eventservicegroup" value="224.1.2.8:45703"/>
+  <param name="eventservicedevice" value="eth1"/>
+  <param name="controlportendpoint" value="0.0.0.0:47000"/>
+
+  <nem id="1" definition="nem.xml">
+    <transport definition="transvirtual.xml">
+      <param name="address" value="10.100.0.1"/>
+      <param name="mask" value="255.255.255.0"/>
+    </transport>
+    </nem>
+</platform>
+\end{lstlisting}
+
+\section{Configurazione protocollo di routing OLSR}
+\label{app:routing}
+
+\lstset{language=BASH}
+\begin{lstlisting}
+DebugLevel	0
+
+# IP version to use (4 or 6)
+
+IpVersion	4
+
+LockFile "/var/lib/emanenode/persist/1/var/run/olsrd.lock"
+
+# Clear the screen each time the internal state changes
+
+ClearScreen     yes
+
+LinkQualityAging 0.2
+
+Interface "emane0" "emane1"
+{
+ HelloInterval 1.0
+ HelloValidityTime 5.0
+}
+
+LoadPlugin "olsrd_txtinfo.so.0.1"
+{
+PlParam "accept" "0.0.0.0"
+}
+\end{lstlisting}
+
+\section{Configurazione XML di emaneeventservice}
+\label{app:emaneeventservice}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eventservice SYSTEM "file:///usr/share/emane/dtd/eventservice.dtd">
+<eventservice>
+  <param name="eventservicegroup" value="224.1.2.8:45703"/>
+  <param name="eventservicedevice" value="emanenode0"/>
+  <generator definition="eelgenerator.xml"/>
+</eventservice>
+\end{lstlisting}
+
+\section{Configurazione XML EEL Generator}
+\label{app:eel_generator}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eventgenerator SYSTEM "file:///usr/share/emane/dtd/eventgenerator.dtd">
+<eventgenerator library="eelgenerator">
+  <param name="inputfile" value="../scenario/scenario.eel" />
+  <paramlist name="loader">
+    <item value="commeffect:eelloadercommeffect:delta"/>
+    <item value="location,velocity,orientation:eelloaderlocation:delta"/>
+    <item value="pathloss:eelloaderpathloss:delta"/>
+    <item value="antennaprofile:eelloaderantennaprofile:delta"/>
+  </paramlist>
+</eventgenerator>
+\end{lstlisting}
+
+\section{Configurazione XML Event Daemon}
+\label{app:event_daemon}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eventdaemon SYSTEM "file:///usr/share/emane/dtd/eventdaemon.dtd">
+<eventdaemon nemid="1">
+  <param name="eventservicegroup" value="224.1.2.8:45703"/>
+  <param name="eventservicedevice" value="eth1"/>
+  <agent definition="gpsdlocationagent1.xml"/>
+</eventdaemon>
+\end{lstlisting}
+
+\section{File EEL}
+\label{app:eel_file}
+
+\lstset{language=BASH}
+\begin{lstlisting}
+0.0  nem:1 commeffect nem:2,0,0,0,0,0,0
+0.0  nem:2 commeffect nem:1,0,0,0,0,0,0
+0.0  nem:2 commeffect nem:3,0,0,0,0,0,0
+0.0  nem:3 commeffect nem:2,0,0,0,0,0,0
+0.0  nem:3 commeffect nem:4,0,0,0,0,0,0
+0.0  nem:4 commeffect nem:3,0,0,0,0,0,0
+0.0  nem:4 commeffect nem:5,0,0,0,0,0,0
+0.0  nem:5 commeffect nem:4,0,0,0,0,0,0
+0.0  nem:5 commeffect nem:6,0,0,0,0,0,0
+0.0  nem:6 commeffect nem:5,0,0,0,0,0,0
+0.0  nem:6 commeffect nem:7,0,0,0,0,0,0
+0.0  nem:7 commeffect nem:6,0,0,0,0,0,0
+0.0  nem:8 commeffect nem:1,0,0,0,0,0,0
+0.0  nem:1 commeffect nem:8,0,0,0,0,0,0
+0.0  nem:8 commeffect nem:2,0,0,0,0,0,0
+0.0  nem:2 commeffect nem:8,0,0,0,0,0,0
+0.0  nem:8 commeffect nem:3,0,0,0,0,0,0
+0.0  nem:3 commeffect nem:8,0,0,0,0,0,0
+0.0  nem:8 commeffect nem:4,0,0,0,0,0,0
+0.0  nem:4 commeffect nem:8,0,0,0,0,0,0
+0.0  nem:8 commeffect nem:5,0,0,0,0,0,0
+0.0  nem:5 commeffect nem:8,0,0,0,0,0,0
+0.0  nem:8 commeffect nem:6,0,0,0,0,0,0
+0.0  nem:6 commeffect nem:8,0,0,0,0,0,0
+0.0  nem:8 commeffect nem:7,0,0,0,0,0,0
+0.0  nem:7 commeffect nem:8,0,0,0,0,0,0
+0.0  nem:1 location gps 40.000000,-74.480000,1.000000
+0.0  nem:2 location gps 40.000000,-74.480700,1.000000
+0.0  nem:3 location gps 40.000000,-74.481400,1.000000
+0.0  nem:4 location gps 40.000000,-74.482100,1.000000
+0.0  nem:5 location gps 40.000000,-74.482800,1.000000
+0.0  nem:6 location gps 40.000000,-74.483500,1.000000
+0.0  nem:7 location gps 40.000000,-74.484200,1.000000
+0.0  nem:8 location gps 40.000400,-74.478600,1.000000
+1.0  nem:8 location gps 40.000400,-74.478614,1.000000
+2.0  nem:8 location gps 40.000400,-74.478628,1.000000
+3.0  nem:8 location gps 40.000400,-74.478642,1.000000
+\end{lstlisting}
+
+\section{Configurazione XML GPS}
+\label{app:gps}
+
+\lstset{language=XML}
+\begin{lstlisting}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE eventagent SYSTEM "file:///usr/share/emane/dtd/
+		eventagent.dtd">
+<eventagent library="gpsdlocationagent">
+  <param name="gpsdconnectionenabled" value="no"/>
+  <param name="pseudoterminalfile"
+         value="persist/1/var/run/gps.pty"/>
+</eventagent>
+\end{lstlisting}
+
+\chapter{Script}
+\label{app:script}
+
+Qui vengono presentati gli script da me realizzati per raggiungere scopi diversi per una buona riuscita delle emulazioni e delle misure effettuate.
+
+\section{Script generatore EEL}
+\label{app:script_eel_generator}
+
+\lstset{language=PYTHON}
+\begin{lstlisting}
+handle = open("./scenario.eel","w");
+
+nem = 1;
+while (nem < 7):
+	nemsucc=nem+1;
+	commeffect= "0.0  nem:"+str(nem)+" commeffect nem:"+str(nemsucc)+",0,0,0,0,0,0\n";
+	commeffect1= "0.0  nem:"+str(nemsucc)+" commeffect nem:"+str(nem)+",0,0,0,0,0,0\n";
+	handle.write(commeffect);
+	handle.write(commeffect1);
+	nem=nem+1;
+
+nem=1;
+while (nem<=7) :
+	commeffect = "0.0  nem:8 commeffect nem:"+str(nem)+",0,0,0,0,0,0\n0.0  nem:"+str(nem)+" commeffect nem:8,0,0,0,0,0,0\n";
+	handle.write(commeffect);
+	nem=nem+1;
+
+i=-74.48;
+
+nem = 1;
+while (nem <= 7) :
+	location = "0.0  nem:"+str(nem)+" location gps 40.000000,"+str("%.6f"% i)+",1.000000\n"
+	handle.write(location);
+	i = i - 0.0007;
+	nem=nem+1;
+
+i=-74.478586;
+massimo=-74.4856;
+sec=0;
+
+while (i>massimo) :
+	i=i-0.000014;
+	handle.write(str(sec)+".0  nem:8 location gps 40.000400,"+str("%.6f"% i)+",1.000000\n");
+	sec=sec+1;
+
+handle.close();
+\end{lstlisting}
+
+\section{Script avvio emulazione}
+\label{app:script_avvio}
+
+Script da lanciare:
+
+\lstset{language=BASH}
+\begin{lstlisting}
+#!/bin/bash -
+
+prefix=node-
+bridge=emanenode0
+nodevolume=/var/lib/emanenode
+nodecount=8
+
+mkdir -p persist/host/var/log
+mkdir -p persist/host/var/run
+rm -f persist/host/var/log/*
+
+echo "Creating bridge: $bridge"
+                
+brctl addbr $bridge
+                
+ip addr add 10.99.0.100/24 dev $bridge
+                
+ip link set $bridge up
+                
+iptables -I INPUT -i $bridge -j ACCEPT
+                
+iptables -I FORWARD -i $bridge -j ACCEPT
+
+# disable realtime scheduling contraints
+sysctl kernel.sched_rt_runtime_us=-1
+
+
+for nodeid in $(seq 1 $nodecount)
+        do
+            mkdir -p persist/$nodeid/var/log
+            mkdir -p persist/$nodeid/var/run
+            rm -f persist/$nodeid/var/log/*
+            rm -f persist/$nodeid/var/run/*
+
+            name=$prefix$nodeid
+            hex=$(printf "%02x" $nodeid)
+
+            cat <<EOF > persist/$nodeid/var/run/lxc.conf.$nodeid
+lxc.utsname=$name
+lxc.network.type=veth
+lxc.network.name=eth1
+lxc.network.flags=up
+lxc.network.link=$bridge
+lxc.network.hwaddr=02:00:$hex:01:00:01
+lxc.network.ipv4=10.99.0.$nodeid/24
+lxc.network.veth.pair=veth$nodeid.1
+
+lxc.network.type=veth
+lxc.network.name=eth2
+lxc.network.hwaddr=02:00:$hex:02:00:01
+lxc.network.veth.pair=veth$nodeid.2
+
+lxc.network.type = empty
+lxc.network.flags=up
+
+lxc.console = none
+lxc.tty = 1
+lxc.pts = 128
+lxc.cgroup.devices.allow = a
+lxc.mount.entry = $(pwd) $nodevolume none defaults,bind 0 0
+
+lxc.aa_profile = unconfined
+EOF
+
+lxc-execute -f persist/$nodeid/var/run/lxc.conf.$nodeid \
+                -n $name \
+                -o persist/$nodeid/var/log/
+                   lxc-execute.log.$nodeid \
+                -l DEBUG \
+                -- \
+                ./carica_servizi $nodeid &
+
+            while (! test -f persist/$nodeid/var/log/lxc-execute.log.$nodeid)
+            do
+                sleep 1
+            done
+
+        done
+
+emaneeventservice eventservice.xml -l 3 > persist/host/var/log/emaneeventservice.log
+\end{lstlisting}
+
+\section{Script caricatore di servizi}
+\label{app:script_richiamato}
+
+Questo script viene richiamato all'interno del precedente (Appendice \ref{app:script_avvio}) al fine di caricare tutti i servizi sui vari nodi dell'emulazione. \\
+
+\lstset{language=BASH}
+\begin{lstlisting}
+#!/bin/bash -
+
+export PATH=$PATH:/sbin:/usr/sbin
+
+nodeId=$1
+
+# fix devpts
+mount /dev/pts -o remount,rw,mode=620,ptmxmode=666,gid=5
+
+# Si avvia sshd sul nodo in modo da poter entrare tramite ssh
+/usr/sbin/sshd -o "PidFile=persist/$nodeId/var/run/ssh.pid"
+
+# Si avvia emane sul nodo specificando il file di configurazione, il file di log, il file del pid e il file dell'uuid
+emane platform$nodeId.xml -r -d -l 4 -f persist/$nodeId/var/log/emane.log \
+--pidfile persist/$nodeId/var/run/emane.pid --uuidfile persist/$nodeId/var/run/emane.uuid      
+
+# Avviare gli eventi sui nodi
+rm -f persist/$nodeId/var/run/gps.pty
+
+echo "Starting emaneeventd: eventdaemon$nodeId.xml"
+
+emaneeventd -r -d -l 3 eventdaemon$nodeId.xml -f persist/$nodeId/var/log/emaneeventd.log \
+--pidfile persist/$nodeId/var/run/emaneeventd.pid --uuidfile persist/$nodeId/var/run/emaneeventd.uuid
+
+echo "Waiting for GPS Location PTY: persist/$nodeId/var/run/gps.pty"
+
+while (! test -f persist/$nodeId/var/run/gps.pty)
+do
+	sleep 1
+done
+
+#Imposta il livello di log al massimo (DEBUG)
+#emanesh node-$nodeId loglevel 4
+
+# Avvio del gps
+echo "Starting gpsd: persist/$nodeId/var/run/gps.pty"
+
+gpsd -P persist/$nodeId/var/run/gpsd.pid -G -n -b `cat persist/$nodeId/var/run/gps.pty`
+
+# Avvia olsrd
+olsrd -f "routing$nodeId.conf" -d 3 > persist/$nodeId/var/log/routing$nodeId.log
+\end{lstlisting}
+
+\section{Script arresto emulazione}
+\label{app:script_arresto}
+
+\lstset{language=BASH}
+\begin{lstlisting}
+#!/bin/bash -
+
+prefix=node-
+bridge=emanenode0
+nodevolume=/var/lib/emanenode
+bridgecontrol=1
+nodecount=8
+
+check_bridge()
+{
+    return $(brctl show | awk "/^$1[\t\s]+/{exit 1}") 
+}
+
+for nodeid in $(seq 1 $nodecount)
+        do
+            echo "Stopping lxc instance: $prefix$nodeid"
+
+            lxc-stop -n $prefix$nodeid
+
+        done
+        
+        if [ -f persist/host/var/run/emaneeventservice.pid ]
+        then
+            kill -QUIT $(cat persist/host/var/run/emaneeventservice.pid)
+            rm -f persist/host/var/run/emaneeventservice.pid
+        fi
+                
+        if [ -f persist/host/var/run/emane.pid ]
+        then
+            kill -QUIT $(cat persist/host/var/run/emane.pid)
+            rm -f persist/host/var/run/emane.pid
+        fi
+
+        if [ -f persist/host/var/run/transportdaemon.pid ]
+        then
+            kill -QUIT $(cat persist/host/var/run/transportdaemon.pid)
+            rm -f persist/host/var/run/transportdaemon.pid
+        fi
+        
+        if [[ $bridgecontrol -ne 0 ]]
+        then
+            if (! check_bridge $bridge)
+            then
+                echo "Removing bridge: $bridge"
+                
+                ip link set $bridge down
+                
+                brctl delbr $bridge
+                
+                iptables -D INPUT -i $bridge -j ACCEPT
+                
+                iptables -D FORWARD -i $bridge -j ACCEPT
+            fi
+        fi
+
+        sleep 2
+
+        for vif in $(ip link show | awk -F : '/veth[0-9]+\.[0-9]/{print $2}')
+        do
+            echo "Performing extra cleanup of vif $vif"
+            ip link del dev $vif 2>&1 > /dev/null
+        done
+
+        # paranoia - make sure everything is down
+        for i in $(ps ax | awk '/emaneeventservic[e] /{print $1}')
+        do
+            echo "Performing extra cleanup of emaneeventservice [$i]"
+            kill -9 $i;
+        done
+
+        for i in $(ps ax | awk '/emanetransport[d] /{print $1}')
+        do
+            echo "Performing extra cleanup of emanetransportd [$i]"
+            kill -9 $i;
+        done    
+
+        for i in $(ps ax | awk '/eman[e] /{print $1}')
+        do
+            echo "Performing extra cleanup of emane [$i]"
+            kill -9 $i;
+        done  
+\end{lstlisting}
+
+\section{Script raccolta dati}
+\label{app:script_raccolta}
+
+Questo script php è stato realizzato per raccogliere (tramite l'utilizzo di Espressioni Regolari) i dati relativi alla potenza di ricezione del nodo 8 dal file di log di EMANE e le misurazioni fatte dal protocollo di routing relative all'ETX del nodo 8 rispetto agli altri nodi. \\
+
+\lstset{language=PHP}
+\begin{lstlisting}
+<?php
+$handle = fopen("./persist/8/var/log/emane.log","r");
+$riga_emane = fgets($handle);
+$primo = true;
+while (!feof($handle)) {
+	if (preg_match("/IEEEMACLayer::processUpstreamPacket: src [[:digit:]]{1}/", $riga_emane)) {
+		$riga_emane1 = fgets($handle);
+		if (preg_match("/IEEEMACLayer::processUpstreamPacket .+power: -[[:digit:]]{2}\.[[:digit:]]{2}/", $riga_emane1)) {
+			$ora = substr($riga_emane, 0,2);
+			$minuti = substr($riga_emane, 3,2);
+			$secondi = substr($riga_emane, 6,2);
+			$totale_secondi = $secondi + $minuti*60 + $ora*3600;
+			if ($primo) {
+				$inizio_emulazione = $totale_secondi;
+				$primo = false;
+			}
+			$tempo = $totale_secondi - $inizio_emulazione;
+			$src = substr($riga_emane, 72,1);
+			$db = substr($riga_emane1, 161,7);
+			$db = round($db,2);
+			$db = substr($db,0,3).",".substr($db, 4);
+			$power[$tempo][$src] = $db;
+		} else {
+			$riga_emane = $riga_emane1;
+		}
+	} else {
+		$riga_emane = fgets($handle);
+	}
+}
+fclose($handle);
+ksort($power);
+foreach ($power as $key => $value) {
+	ksort($power[$key]);
+}
+$dati_estratti = fopen("./grafici/dati_estratti_power.csv", "w+");
+foreach ($power as $key => $value) {
+	$da_scrivere = $key;
+	for ($i=1;$i<=7;$i++) {
+		if (isset($value[$i])) {
+			$da_scrivere = $da_scrivere.";".$value[$i];
+		} else {
+			$da_scrivere = $da_scrivere.";";
+		}
+	}
+	$da_scrivere = $da_scrivere."\n";
+	fwrite($dati_estratti,$da_scrivere);
+}
+fclose($dati_estratti);
+
+$routing = fopen("./persist/8/var/log/routing8.log","r");
+$riga_routing = fgets($routing);
+while (!feof($routing)) {
+	if (preg_match("/--- .+LINKS/", $riga_routing)) {
+		$ora = substr($riga_routing, 4,2);
+		$minuti = substr($riga_routing, 7,2);
+		$secondi = substr($riga_routing, 10,2);
+		$totale_secondi = $secondi + $minuti*60 + $ora*3600;
+		$tempo = $totale_secondi - $inizio_emulazione;
+		$riga_routing1 = fgets($routing);
+		$riga_routing1 = fgets($routing);
+		$riga_routing1 = fgets($routing);
+		while (preg_match("/10\.100\.0\.[[:digit:]]/", $riga_routing1)) {
+			$src = substr($riga_routing1, 9,1);
+			$val = substr($riga_routing1, 39);
+			if (trim($val) == "INFINITE") {
+				$val = 0;
+			} else {
+				$val = explode(".", $val);
+				$val = trim($val[0]).",".trim($val[1]);
+			}
+			if ($val != 0) {
+				$etx[$tempo][$src] = $val;
+			}
+			$riga_routing1 = fgets($routing);
+		}
+		$riga_routing = $riga_routing1;
+	} else {
+		$riga_routing = fgets($routing);
+	}
+}
+fclose($routing);
+ksort($etx);
+$time = array();
+foreach ($etx as $key => $value) {
+	ksort($etx[$key]);
+	for ($i=1;$i<=7;$i++) {
+		if (isset($value[$i])) {
+			$time[$i] = $key;
+		}
+	}
+}
+foreach ($time as $key => $value) {
+	$etx[$value+1][$key] = 25;
+}
+$dati_estratti = fopen("./grafici/dati_estratti_etx.csv", "w+");
+foreach ($etx as $key => $value) {
+	$da_scrivere = $key;
+	for ($i=1;$i<=7;$i++) {
+		if (isset($value[$i])) {
+			$da_scrivere = $da_scrivere.";".$value[$i];
+		} else {
+			$da_scrivere = $da_scrivere.";";
+		}
+	}
+	$da_scrivere = $da_scrivere."\n";
+	fwrite($dati_estratti,$da_scrivere);
+}
+fclose($dati_estratti);
+?>
+\end{lstlisting}
