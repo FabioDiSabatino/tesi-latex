@@ -1,5 +1,5 @@
 \chapter{L'implementazione}
-
+In questo capitolo verranno illustrati i framework utilizzati per l'implementazione dell'applicazione e l'algoritmo ideato per la creazione di una griglia sulla mappa con il relativo codice Javascript.
 \section{Le applicazioni cross-platform}
 Negli ultimi anni, i dispositivi mobili sono diventati sempre più parte integrante della nostra vita, grazie al progresso tecnologico e all'abbattimento dei prezzi, oggi costituiscono un bene alla portata di tutti. \\
 La possibilità di scegliere tra una vasta gamma di smartphone diversi per caratteristiche e produttore, ha reso più complicata la vita delle aziende informatiche che sono costrette a considerare l'eterogeneità dei vari sistemi operativi in circolazione.\\
@@ -69,13 +69,83 @@ riassume lo stato dell'arte riguardo la compatibilità e l'accessibilità che il
 \end{figure}
 
 \section{Ratchet}
-Il solo utilizzo del framework PhoneGap non è sufficiente per realizzare un'applicazione degna di nota. L'interfaccia grafica costituisce un'elemento fondamentale nelle moderne applicazioni mobili. Inoltre, se ben progettata, contribuisce ad aumentare la user experience \cite{EXPERIENCE} e in generale l'usabilità del sistema stesso. A tale proposito è stato utilizzato il framework opens source \textbf{Ratchet}.
+Il solo utilizzo del framework PhoneGap non è sufficiente per realizzare un'applicazione degna di nota. L'interfaccia grafica costituisce un'elemento fondamentale nelle moderne applicazioni mobili. Inoltre, se ben progettata, contribuisce ad aumentare la user experience \cite{EXPERIENCE} e in generale l'usabilità del sistema stesso. A tale proposito è stato utilizzato il framework opens source \textbf{Ratchet} [http://goratchet.com/].
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.8]{Implementazione/ratchet_logo.png}
+	\includegraphics[scale=1]{Implementazione/ratchet_logo.png}
 	\caption{Il logo del framework Ratchet}
 	\label{fig:logo_ratchet}
 \end{figure}
 
-I componenti offerti da questo strumento sono responsive e appositamente progettati per i dispositivi mobile ed il loro utilizzo è tanto semplice quanto efficace; analogamente ad altri progetti di successo, come Bootstrap, i componenti possono essere inclusi nell'interfaccia semplicemente aggiungendo codice HTML e stili CSS. La combinazioe di questo tool con un altro in grado di accedere al DOM (Document Object Model) dell'applicazione (vedi \ref{phonegap}), nel nostro caso si è utilizzato\textit{ JQuery}, permette di realizzare applicazioni molto simili a quelle native.\\
+I componenti grafici offerti da questo strumento sono responsive e appositamente progettati per gli smartphone; il loro utilizzo è tanto semplice quanto efficace, analogamente ad altri progetti di successo, come Bootstrap, i componenti possono essere inclusi nell'interfaccia aggiungendo dello specifico codice HTML e vari stili CSS (costumizzabili a proprio piacimento). A partire dalla seconda versione è stata integrata una classe di icone con immagini di uso comune nelle applicazioni mobili.\\
+La combinazione di questo tool insieme ad altri per l'accesso al DOM (Document Object Model) dell'applicazione (vedi \ref{phonegap}), nel nostro caso \textit{jQuery}, permette di realizzare applicazioni con un'interfaccia accattivante e molto simile a quelle native.
+\newpage
+Ad esempio per aggiungere la "classica" tab-bar basta inserire il seguente codice HTML:
+\begin{lstlisting} [language=XML]
+<nav class="bar bar-tab">
+  <a class="tab-item active" href="#">
+    <span class="icon icon-home"></span>
+    <span class="tab-label">Home</span>
+  </a>
+  <a class="tab-item" href="#">
+    <span class="icon icon-person"></span>
+    <span class="tab-label">Profile</span>
+  </a>
+  <a class="tab-item" href="#">
+    <span class="icon icon-star-filled"></span>
+    <span class="tab-label">Favorites</span>
+  </a>
+  <a class="tab-item" href="#">
+    <span class="icon icon-search"></span>
+    <span class="tab-label">Search</span>
+  </a>
+  <a class="tab-item" href="#">
+    <span class="icon icon-gear"></span>
+    <span class="tab-label">Settings</span>
+  </a>
+</nav>
+\end{lstlisting}
+\newpage
+Ed ottenere il seguente risultato:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{Implementazione/tab-bar.png}
+	\caption{Il componente tab-bar con cinque icone}
+	\label{fig:tab}
+\end{figure}
+
+\newpage
+
+\section{La griglia trasparente}
+Come specificato nei requisiti di sistema, l'utente e gli eventi devono essere associati in modo univoco ad una cella di larghezza (22 x 16) mt; per fare ciò è necessario che il sistema sia in grado di "costruire" una griglia. Questa deve essere del tutto invisibile agli utenti che non hanno alcun interesse a conoscere o comprendere tale dettaglio.\\
+Prima di spiegare la soluzione a questo problema occorre fare un passo indietro, sin dai tempi più remoti l'uomo ha cercato di creare delle mappe cartografiche. Le più antiche testimonianze \cite{GROTTE} conosciute di qualcosa che assomigli ad una rappresentazione cartografica non riguardano la terra, ma il cielo, così come appare di notte. Sui muri delle grotte di Lascaux sono stati infatti osservati dei puntini dipinti databili al 16.500 a.C.che rappresentano il cielo notturno ed in cui si possono riconoscere Vega, Deneb e Altair (il cosiddetto Triangolo estivo), nonché le Pleiadi.Dall'ora la cartografia ha fatto passi da gigante(vedi \ref{OpenStreetMap}).\\
+Tornando a noi, la soluzione trovata si basa sul calcolo della distranza tra due punti geografici, il cui problema è la definizione stessa dei punti. Non avendo la Terra una forma lineare, è difficile trovare una rappresentazione geometrica perfetta di essa. \\
+Gli algoritmi più utilizzati per il calcolo della distanza tra due punti, utilizzano le formule di Haversine e Vincenty, il primo si basa sull'approssimazione della terra ad una sfera perfetta, mentre il secondo la modelizza in uno sferoide oblato. \\
+E' bene dire che mentre il risultato ottenuto tramite la formula di Haversine può avere un'errore dello 0,3\%  quello di Vincenty è molto più accurato, con un errore di 0.5mm circa; questa precisione si ha a discapito di un costo computazionale più elevato. Per brevi distanze i metodi tendono invece a convergere.\\
+Con entrambi gli algoritmi è stato verificato che una variazione unitaria di $10^{-4} $ gradi corrisponde ad una distanza di 11 mt se in latitudine, 8 mt se in longitudine. Partendo da questo risultato si è così ideato \textbf{l'algoritmo di Santiago}.
+\newpage
+\begin{enumerate}
+\item L'utente viene "posto" all'interno di un sistema di riferimento calcolato troncando la sue coordinate alla $10^{-3} $ cifra decimale. La grandezza fisica dei sistemi è $ 110* 88 mt^{2} $. L'origine corrisponde alle coordinate dell'utente troncate alla $10^{-4} $, con l'ultima cifra decimale uguale a zero.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{Implementazione/sis1.png}
+	\caption{Sistema di riferimento dell'utente}
+	\label{fig:sis}
+\end{figure}
+\newpage
+\item Le coordinate dell'utente (o dell'evento) vengono troncate definitivamente alla quarta cifra decimale, questo significa mappare tutte le persone all'interno di rettangolo di grandezza $11 * 8 mt^{2}$ nell'angolo in basso a destra (ndr Santiago de Chile si trova in direzione sud-ovest dall'Italia, da cui il nome dell'algoritmo) con le prime tre cifre decimali uguali e l'ultima uguale a zero. Di seguito un'immagine per chiarire meglio il funzionamento.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{Implementazione/mapping.png}
+	\caption{Mapping dell'utente all'interno delle celle}
+	\label{fig:mapping}
+\end{figure}
+\end{enumerate}
+
+I cerchi blu rappresentano le posizioni di diversi utenti, mentre i cerchi rossi rappresentato la posizione dopo il troncamento.
+\newpage
+
+\item Per rispettare le specifiche le celle devono essere composte da quattro celle (in fig \ref{fig:mapping} racchiuse da bordi neri continui)
+

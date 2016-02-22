@@ -16,6 +16,7 @@
 \contentsline {section}{\numberline {4.1}Le applicazioni cross-platform}{27}{section.4.1}
 \contentsline {section}{\numberline {4.2}PhoneGap}{29}{section.4.2}
 \contentsline {section}{\numberline {4.3}Ratchet}{33}{section.4.3}
-\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{34}{chapter.5}
-\contentsline {chapter}{Ringraziamenti}{35}{chapter*.5}
-\contentsline {chapter}{Bibliografia}{36}{chapter*.6}
+\contentsline {section}{\numberline {4.4}La griglia trasparente}{36}{section.4.4}
+\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{39}{chapter.5}
+\contentsline {chapter}{Ringraziamenti}{40}{chapter*.5}
+\contentsline {chapter}{Bibliografia}{41}{chapter*.6}
