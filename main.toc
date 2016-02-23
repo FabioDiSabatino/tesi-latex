@@ -16,9 +16,10 @@
 \contentsline {section}{\numberline {4.1}Le applicazioni cross-platform}{27}{section.4.1}
 \contentsline {section}{\numberline {4.2}PhoneGap}{29}{section.4.2}
 \contentsline {section}{\numberline {4.3}Ratchet}{33}{section.4.3}
-\contentsline {section}{\numberline {4.4}La griglia trasparente}{36}{section.4.4}
-\contentsline {subsection}{\numberline {4.4.1}L'algoritmo di Santiago}{37}{subsection.4.4.1}
-\contentsline {subsection}{\numberline {4.4.2}Il codice}{42}{subsection.4.4.2}
-\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{44}{chapter.5}
-\contentsline {chapter}{Ringraziamenti}{45}{chapter*.5}
-\contentsline {chapter}{Bibliografia}{46}{chapter*.6}
+\contentsline {section}{\numberline {4.4}Leaflet}{36}{section.4.4}
+\contentsline {section}{\numberline {4.5}La griglia trasparente}{38}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}L'algoritmo di Santiago}{39}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Il codice}{44}{subsection.4.5.2}
+\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{46}{chapter.5}
+\contentsline {chapter}{Ringraziamenti}{47}{chapter*.5}
+\contentsline {chapter}{Bibliografia}{48}{chapter*.6}

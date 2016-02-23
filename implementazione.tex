@@ -116,7 +116,51 @@ Ed ottenere il seguente risultato:
 \end{figure}
 
 \newpage
+\section{Leaflet}
 
+Per la mappa interattiva si è utilizzata la libreria \textbf{ Leaflet} \cite{LEAFLET}. Leaflet è una libreria open source JavaScript per le mappe interattive mobili-friendly. Con nn peso di soli circa 33 KB di JS, ha tutte le caratteristiche e le maggiori funzioni necessarie agli sviluppatori.\\
+Leaflet è stato progettato per avere alte prestazioni ed facilmente utilizzabile. Funziona in modo efficiente su tutte le principali piattaforme desktop e mobile, può essere estesa con un sacco di plugin e la documentazione è ben fatta.\\
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{Implementazione/leaflet.png}
+	\caption{Il logo della libreria Leaflet}
+	\label{fig:leaflet}
+\end{figure}
+
+Il codice per inserire una mappa all'interno di un \textit{div} con \textit{id='map'} è semplicemente:
+\begin{lstlisting} [language=JavaScript]
+var map = L.map('map').setView([51.505, -0.09], 13);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+//aggiunge un marker alle coordinate [51.5,-0.09]
+L.marker([51.5, -0.09]).addTo(map)
+    .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    .openPopup();
+\end{lstlisting}
+Con il seguente risultato:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{Implementazione/leaflet_result.png}
+	\caption{Risultato grafico con il codice precedente}
+	\label{fig:leaflet_result}
+\end{figure}
+Le coordinate sono implementate attraverso l'oggetto latLng, ed è possibile crearne delle nuove nel seguente modo:
+\begin{lstlisting} [language=JavaScript]
+var latlng = L.latLng(50.5, 30.5);
+\end{lstlisting}
+Come detto la libreria dispone di una grande quantità di funzioni e metodi utili, ad esempio l'evento sulla geolocalizzazione:
+\begin{lstlisting} [language=JavaScript]
+	function onLocationFound(e) {
+	console.log("localizzato!!")
+};
+\end{lstlisting}
+L'oggetto \textit{"e"} contiene al suo interno, oltre alle coordinate, altri oggetti utili come la velocità, l'orario, l'altitudine ect.\\
+Esistono altre librerie per utilizzare i dati ottenuti da un server OpenStreetMap, tuttavia questa si è rivelata essere molto efficente e semplice; merito di una curva di apprendimento buona e della ricca e chiara documentazione fornita. Inoltre è stato utilizzato un plugin che permette di salvare, in locale al device, la mappa visualizzata dall'utente su diversi livelli di zoom.
+
+\newpage
 \section{La griglia trasparente}
 Come specificato nei requisiti di sistema, l'utente e gli eventi devono essere associati in modo univoco ad una cella di grandezza $(22*16)mt^{2}$; per fare ciò è necessario che il sistema sia in grado di "costruire" dinamicamente una griglia. Questa deve essere del tutto invisibile agli utenti che non hanno alcun interesse a conoscere o comprendere tale dettaglio implementativo.\\
 Prima di spiegare la soluzione a questo problema occorre fare un passo indietro, sin dai tempi più remoti l'uomo ha cercato di creare delle mappe cartografiche. Le più antiche testimonianze \cite{GROTTE} conosciute di qualcosa che assomigli ad una rappresentazione cartografica non riguardano la terra, ma il cielo, così come appare di notte. Sui muri delle grotte di Lascaux sono stati infatti osservati dei puntini dipinti databili al 16.500 a.C. che rappresentano il cielo notturno ed in cui si possono riconoscere Vega, Deneb e Altair (il cosiddetto Triangolo estivo), nonché le Pleiadi. Da allora la cartografia ha fatto passi da gigante(vedi cap \ref{cap:OpenStreetMap}).\\
