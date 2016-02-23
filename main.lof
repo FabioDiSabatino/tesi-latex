@@ -20,5 +20,8 @@
 \contentsline {figure}{\numberline {4.6}{\ignorespaces Il logo del framework Ratchet}}{33}{figure.4.6}
 \contentsline {figure}{\numberline {4.7}{\ignorespaces Il componente tab-bar con cinque icone}}{35}{figure.4.7}
 \contentsline {figure}{\numberline {4.8}{\ignorespaces Sistema di riferimento dell'utente}}{37}{figure.4.8}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Mapping dell'utente all'interno delle celle}}{38}{figure.4.9}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Troncamento delle coordinate alla quarta cifra decimale posta a zero}}{38}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Alcune celle evidenziate in blu}}{39}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Proiezione delle distanze utilizzate per il calcolo della cella}}{40}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Posizione ottenuta riconvertendo la tupla di dati vista nel passo \ref {tupla} dell'algoritmo }}{41}{figure.4.12}
 \addvspace {10\p@ }

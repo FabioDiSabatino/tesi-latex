@@ -118,15 +118,17 @@ Ed ottenere il seguente risultato:
 \newpage
 
 \section{La griglia trasparente}
-Come specificato nei requisiti di sistema, l'utente e gli eventi devono essere associati in modo univoco ad una cella di larghezza (22 x 16) mt; per fare ciò è necessario che il sistema sia in grado di "costruire" una griglia. Questa deve essere del tutto invisibile agli utenti che non hanno alcun interesse a conoscere o comprendere tale dettaglio.\\
-Prima di spiegare la soluzione a questo problema occorre fare un passo indietro, sin dai tempi più remoti l'uomo ha cercato di creare delle mappe cartografiche. Le più antiche testimonianze \cite{GROTTE} conosciute di qualcosa che assomigli ad una rappresentazione cartografica non riguardano la terra, ma il cielo, così come appare di notte. Sui muri delle grotte di Lascaux sono stati infatti osservati dei puntini dipinti databili al 16.500 a.C.che rappresentano il cielo notturno ed in cui si possono riconoscere Vega, Deneb e Altair (il cosiddetto Triangolo estivo), nonché le Pleiadi.Dall'ora la cartografia ha fatto passi da gigante(vedi \ref{OpenStreetMap}).\\
-Tornando a noi, la soluzione trovata si basa sul calcolo della distranza tra due punti geografici, il cui problema è la definizione stessa dei punti. Non avendo la Terra una forma lineare, è difficile trovare una rappresentazione geometrica perfetta di essa. \\
+Come specificato nei requisiti di sistema, l'utente e gli eventi devono essere associati in modo univoco ad una cella di grandezza $(22*16)mt^{2}$; per fare ciò è necessario che il sistema sia in grado di "costruire" dinamicamente una griglia. Questa deve essere del tutto invisibile agli utenti che non hanno alcun interesse a conoscere o comprendere tale dettaglio implementativo.\\
+Prima di spiegare la soluzione a questo problema occorre fare un passo indietro, sin dai tempi più remoti l'uomo ha cercato di creare delle mappe cartografiche. Le più antiche testimonianze \cite{GROTTE} conosciute di qualcosa che assomigli ad una rappresentazione cartografica non riguardano la terra, ma il cielo, così come appare di notte. Sui muri delle grotte di Lascaux sono stati infatti osservati dei puntini dipinti databili al 16.500 a.C. che rappresentano il cielo notturno ed in cui si possono riconoscere Vega, Deneb e Altair (il cosiddetto Triangolo estivo), nonché le Pleiadi. Da allora la cartografia ha fatto passi da gigante(vedi cap \ref{cap:OpenStreetMap}).\\
+Tornando al nostro problema, la soluzione trovata si basa sul calcolo della distranza tra due coordinate geografiche, il cui problema è il calcolo stesso. Non avendo la Terra una forma lineare, è difficile trovare una rappresentazione geometrica perfetta di essa. \\
 Gli algoritmi più utilizzati per il calcolo della distanza tra due punti, utilizzano le formule di Haversine e Vincenty, il primo si basa sull'approssimazione della terra ad una sfera perfetta, mentre il secondo la modelizza in uno sferoide oblato. \\
-E' bene dire che mentre il risultato ottenuto tramite la formula di Haversine può avere un'errore dello 0,3\%  quello di Vincenty è molto più accurato, con un errore di 0.5mm circa; questa precisione si ha a discapito di un costo computazionale più elevato. Per brevi distanze i metodi tendono invece a convergere.\\
-Con entrambi gli algoritmi è stato verificato che una variazione unitaria di $10^{-4} $ gradi corrisponde ad una distanza di 11 mt se in latitudine, 8 mt se in longitudine. Partendo da questo risultato si è così ideato \textbf{l'algoritmo di Santiago}.
+E' bene dire che mentre il risultato ottenuto tramite la formula di Haversine può avere un'errore dello 0,3\%  quello di Vincenty è molto più accurato, con un errore di 0.5mm circa; questa precisione si ha a discapito di un costo computazionale più elevato. Per brevi distanze i metodi tendono invece a convergere.
 \newpage
+\subsection{L'algoritmo di Santiago}
+Con entrambi gli algoritmi è stato verificato che una variazione unitaria di $10^{-4} $ gradi in latitudine corrisponde ad una distanza di 11 mt, 8 mt se in longitudine. Partendo da questo risultato si è così ideato il seguente algoritmo.
+
 \begin{enumerate}
-\item L'utente viene "posto" all'interno di un sistema di riferimento calcolato troncando la sue coordinate alla $10^{-3} $ cifra decimale. La grandezza fisica dei sistemi è $ 110* 88 mt^{2} $. L'origine corrisponde alle coordinate dell'utente troncate alla $10^{-4} $, con l'ultima cifra decimale uguale a zero.
+\item Per prima cosa, si considera l'utente posto all'interno di un sistema di riferimento calcolato troncando le sue coordinate alla terza cifra decimale. La grandezza fisica di questi sistemi è quindi di $ 9680mt^{2} $. L'origine corrisponde alle coordinate dell'utente troncate alla $10^{-4} $, con l'ultima cifra decimale uguale a zero.
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{Implementazione/sis1.png}
@@ -134,18 +136,91 @@ Con entrambi gli algoritmi è stato verificato che una variazione unitaria di $1
 	\label{fig:sis}
 \end{figure}
 \newpage
-\item Le coordinate dell'utente (o dell'evento) vengono troncate definitivamente alla quarta cifra decimale, questo significa mappare tutte le persone all'interno di rettangolo di grandezza $11 * 8 mt^{2}$ nell'angolo in basso a destra (ndr Santiago de Chile si trova in direzione sud-ovest dall'Italia, da cui il nome dell'algoritmo) con le prime tre cifre decimali uguali e l'ultima uguale a zero. Di seguito un'immagine per chiarire meglio il funzionamento.
+\item Le coordinate dell'utente (o dell'evento) vengono quindi troncate alla quarta cifra decimale che viene posta a zero, questo significa mappare tutte le persone, all'interno di un area rettangolare di  $88 mt^{2}$, nell'angolo in basso a sinistra dello stesso rettangolo (ndr Santiago de Chile si trova in direzione sud-ovest dall'Italia, da cui il nome dell'algoritmo). Di seguito un'immagine per chiarire meglio il funzionamento.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.6]{Implementazione/mapping.png}
-	\caption{Mapping dell'utente all'interno delle celle}
+	\caption{Troncamento delle coordinate alla quarta cifra decimale posta a zero}
 	\label{fig:mapping}
 \end{figure}
-\end{enumerate}
 
-I cerchi blu rappresentano le posizioni di diversi utenti, mentre i cerchi rossi rappresentato la posizione dopo il troncamento.
+I cerchi blu rappresentano le posizioni di diversi utenti, mentre i cerchi rossi rappresentato le posizioni dopo il troncamento. E' bene osservare che i punti sui confini in alto e a destra vengono mappati nella cella (o sistema per quelli ai confini) successiva.
+\newpage
+\item Le specifiche impongono celle di grandezza doppia rispetto a quelle ottenibili semplicemente troncando le coordinate alla quarta cifra decimale, questo vuol dire che quattro rettangoli di grandezza $(11*8)mt^{2}$ compongono una cella della nostra griglia; così facendo ogni sistema è composto da 25 celle, come possiamo vedere nella figura successiva.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{Implementazione/celle.png}
+	\caption{Alcune celle evidenziate in blu}
+	\label{fig:celle}
+\end{figure}
+Quindi gli utenti/eventi sono \textbf{identificati senza ambiguità in tutto il globo} dalla seguente ennupla:
+\begin{itemize}
+\label{tupla}
+\item Sistema di riferimento espresso in coordinate troncate alla terza cifra decimale $[xx.yyy,zz.kkk]$
+\item Coppia di interi indicante il numero di cella all'interno del sistema  $[lat_y;lng_x]$
+\end{itemize} 
+\newpage
+\item A questo punto bisogna ottenere la coppia di interi $[lat_y;lng_x]$, il sistema calcola la distanza dagli assi del sistema, dividendo in modulo per 22 quella con l'asse della latitudine e dividendo in modulo per 16 quella con l'asse longitudinale.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{Implementazione/dist.png}
+	\caption{Proiezione delle distanze utilizzate per il calcolo della cella}
+	\label{fig:dist}
+\end{figure}
+Poichè la distanza massima si ha in corrispondenza della cella $[4;4]$ ed equivale a $110 mt$, l'errore massimo di calcolo sarà pari a $33cm$. Questo è il motivo della scelta di un sistema con queste dimensioni, infatti troncando alla seconda cifra decimale avremo sistemi di $0.968km^{2}$ e un'errore di calcolo massimo pari a $3.3mt$, senza considerare l'aumento del costo computazionale richiesto. 
+\end{enumerate}
 \newpage
 
-\item Per rispettare le specifiche le celle devono essere composte da quattro celle (in fig \ref{fig:mapping} racchiuse da bordi neri continui)
+Il procedimento inverso consiste nella seguente formula:
+\begin{equation}
+\label{equazione}
+ [xx.yyy;zz.kkk]+0.0001+([lat_y;lng_x]*0.0001*2)
+\end{equation}
+Così facendo tutti gli eventi/persone vengono mappati al centro delle varie celle, con un errore massimo dalla posizione reale (trascurando l'errore inevitabile del GPS) di $13mt$.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{Implementazione/final.png}
+	\caption{Posizione ottenuta riconvertendo la tupla di dati vista nel passo \ref{tupla} dell'algoritmo }
+	\label{fig:final}
+\end{figure}
+\newpage
+\subsection{Il codice}
+Vediamo quindi il codice \textit{Javascript} utilizzato per implementare l'algoritmo di Santiago. La prima funzione si occupa di calcolare il sistema e quindi la posizione all'interno di esso.
+\begin{lstlisting} [language=JavaScript]
 
+latLng->{lat:Number,lng:Number}
+
+calcCell:function(latLng){
+   var lat=latLng.lat;
+   var lng=latLng.lng;
+   var cut=Math.pow(10,4); 
+  //coordinate origine del sistema
+   var coordinates=L.latLng(Math.floor(lat*cut)/cut,Math.floor(lng*cut)/cut);  
+  //coordinate perpendicolari lat e lng
+   var perpendicular_lat=L.latLng(Math.floor(coordinates.lat*1000)/1000,coordinates.lng); 
+   var perpendicular_lng=L.latLng(coordinates.lat,Math.floor(coordinates.lng*1000)/1000);  
+ //richiama un metodo per il calcolo della distanza utilizzando l'algoritmo di Haversine
+   var dist_lat=this.calcDist(coordinates,perpendicular_lat).haversine; 
+   var dist_lng=this.calcDist(coordinates,perpendicular_lng).haversine;
+   var dist={dist_lat,dist_lng};
+//divisione in modulo per trovare la cella all'interno del sistema
+   var cell_number_lat=Math.floor(dist_lat/22);
+   var cell_number_lng=Math.floor(dist_lng/16);
+   var cell={cell_number_lat,cell_number_lng};
+   return ({zero:L.latLng(perpendicular_lat.lat,perpendicular_lng.lng),cell});
+	},
+\end{lstlisting}
+\newpage
+
+E ora il codice per l'equazione inversa (\ref{equazione}):
+ \begin{lstlisting} [language=JavaScript]
+ data-> {zero:{latLng},cell:{cell_number_lat(Number),cell_number_lng(Number)}}
+ 
+ coordFromCell:function(data){
+
+	 return L.latLng(data.zero.lat+0.0001+(data.cell.cell_number_lat*0.0001*2),data.zero.lng+0.0001+(data.cell.cell_number_lng*0.0001*2));
+	 
+	},
+\end{lstlisting}
+\newpage
