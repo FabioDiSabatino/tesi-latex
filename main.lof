@@ -1,29 +1,29 @@
 \select@language {italian}
 \select@language {italian}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Ciclo di fasi per il disaster-management}}{6}{figure.1.1}
-\contentsline {figure}{\numberline {1.2}{\ignorespaces Contesto d'uso all'interno del disaster-management cycle}}{14}{figure.1.2}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Ciclo di fasi per il disaster-management}}{7}{figure.1.1}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Contesto d'uso del sistema all'interno del disaster-management cycle}}{15}{figure.1.2}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Il logo di OpenStreetMap}}{17}{figure.2.1}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Scala lineare di utenti iscritti ad OpenStreetMap}}{18}{figure.2.2}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Risultato ricerca "colazione"}}{20}{figure.2.3}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Polo universitario di Coppito-L'Aquila}}{22}{figure.2.4}
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Mappa OSM di Pourt-au-Prince 6 ore dopo il terremoto del 2010}}{24}{figure.2.5}
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Mappa OSM di Pourt-au-Prince 48 ore dopo il terremoto del 2010}}{25}{figure.2.6}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Il logo di OpenStreetMap}}{18}{figure.2.1}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Scala lineare di utenti iscritti ad OpenStreetMap}}{19}{figure.2.2}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Risultato ricerca "colazione"}}{21}{figure.2.3}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Polo universitario di Coppito-L'Aquila}}{23}{figure.2.4}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Mappa OSM di Pourt-au-Prince 6 ore dopo il terremoto del 2010}}{25}{figure.2.5}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Mappa OSM di Pourt-au-Prince 48 ore dopo il terremoto del 2010}}{26}{figure.2.6}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Utilizzo dei vari OS su scala mondiale}}{27}{figure.4.1}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Logo del framework PhoneGap}}{29}{figure.4.2}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Logo del framework PhoneGap}}{30}{figure.4.3}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Architettura di un'applicazione realizzata con PhoneGap}}{31}{figure.4.4}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Le API e il loro supporto per le varie piattaforme}}{32}{figure.4.5}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Il logo del framework Ratchet}}{33}{figure.4.6}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Il componente tab-bar con cinque icone}}{35}{figure.4.7}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Il logo della libreria Leaflet}}{36}{figure.4.8}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Risultato grafico con il codice precedente}}{37}{figure.4.9}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Sistema di riferimento dell'utente}}{39}{figure.4.10}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Troncamento delle coordinate alla quarta cifra decimale posta a zero}}{40}{figure.4.11}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Alcune celle evidenziate in blu}}{41}{figure.4.12}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Proiezione delle distanze utilizzate per il calcolo della cella}}{42}{figure.4.13}
-\contentsline {figure}{\numberline {4.14}{\ignorespaces Posizione ottenuta riconvertendo la tupla di dati vista nel passo \ref {tupla} dell'algoritmo }}{43}{figure.4.14}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Utilizzo dei vari OS su scala mondiale}}{31}{figure.4.1}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Logo del framework PhoneGap}}{33}{figure.4.2}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Logo del framework PhoneGap}}{34}{figure.4.3}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Architettura di un'applicazione realizzata con PhoneGap}}{35}{figure.4.4}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Le API e il loro supporto per le varie piattaforme}}{36}{figure.4.5}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Il logo del framework Ratchet}}{37}{figure.4.6}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Il componente tab-bar con cinque icone}}{39}{figure.4.7}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Il logo della libreria Leaflet}}{40}{figure.4.8}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Risultato grafico con il codice precedente}}{41}{figure.4.9}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Sistema di riferimento dell'utente}}{43}{figure.4.10}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Troncamento delle coordinate alla quarta cifra decimale posta a zero}}{44}{figure.4.11}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Alcune celle evidenziate in blu}}{45}{figure.4.12}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Proiezione delle distanze utilizzate per il calcolo della cella}}{46}{figure.4.13}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Posizione ottenuta riconvertendo la tupla di dati vista nel passo \ref {tupla} dell'algoritmo }}{47}{figure.4.14}
 \addvspace {10\p@ }

@@ -9,9 +9,10 @@ In questo capitolo si illustra brevemente il concetto di vulnerabilità e l'equa
 La parola vulnerabilità \cite{NOTE} deriva dal latino "\textit{vulnerare}" che significa ferire. Principalmente si riferisce all'esporre persone, beni e arrività a potenziali danni e/o perdite. \\
 La vulnerabilità è un concetto astratto, ma comunque reale, difficilmente misurabile.  La sua esistenza si percepisce successivamente ad un evento, verificando l'impatto del disastro stesso. Dunque è una proprietà latente o intrinseca.\\
 Uno dei grandi risultati di studi disastri nella seconda metà del XX secolo è stato quello di stabilire che la vulnerabilità è la componente principale del rischio ( Hewitt 1983). In formulazioni più estreme, il pericolo (l'altro principale componente) è considerato come la probabilità che accada un fenomeno dannoso e la vulnerabilità la propensione a subire danni. E' stata quindi formulata un'equazione concettuale che lega questi concetti, ovvero:
-\begin{center}
-$Pericolo * (Vulnerabilit\grave{a} *Esposizione ) = Rischio \rightarrow Impatto$
-\end{center}
+\begin{equation}
+\label{eq}
+Pericolo * (Vulnerabilit\grave{a} *Esposizione ) = Rischio \rightarrow Impatto
+\end{equation}
 \newpage
 Per \textbf{Pericolo} si intende la probabilità che un certo fenomeno colpisca una certa area mentre per \textbf{Esposizione} si intende il lasso di tempo nel quale, una persona, o una risorsa è minacciata da un particolare rischio. 
 Dato il ruolo di \textit{Esposizione} , è importante notare che la vulnerabilità non è un concetto "tutto o niente ". \\
@@ -92,6 +93,7 @@ Un utilizzo ottimale di questo framework è in grado di fornire alla comunità l
 
 
 \section{I luoghi comuni sui disastri}
+\label{comuni}
 Se ci venisse chiesto di immaginare lo scenario immediato ad un disastro ambientale o umano, nella maggior parte dei casi, potremmo scrivere una buona trama per un film apocalittico. Questo succede a causa di alcuni luoghi comuni diffusi nella nostra società \cite{COMMON}, ciò che ci sembra ovvio infatti potrebbe essere soltanto un mito inculcato nella nostra mente:
 \begin{enumerate}
 \item\textbf{ I disastri sono eventi rari}, sono una parte normale della vita quotidiana e in molti casi sono eventi ripetitivi.
@@ -132,25 +134,19 @@ Se ci venisse chiesto di immaginare lo scenario immediato ad un disastro ambient
 
 \section{Il contesto d'uso}
 \label{contesto}
-Il contesto d'uso è la prima parte della fase di \textit{Response }(vedi \ref{fasi}) del disaster-management cycle, nello specifico il sistema è stato progettato per essere utilizzato nei primi momenti successivi a un disastro. \\
+
+Il team di ricerca ha condotto uno studio approfondito sull'utilizzo dei sistemi ICT a supporto del disaster-management, e basandosi sull'esperienza diretta del terremoto che colpì L'Aquila nel 2009, ha ideato un sistema che, nella prima fase di \textit{Response} (vedi \ref{fasi}), possa supportare i  soccorritori (e le vittime) nell'esplorazione del territtorio colpito da un disastro. \\
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{ScenarioApplicativo/contesto.png}
-	\caption{Contesto d'uso all'interno del disaster-management cycle}
-	\label{fig:cycle_management}
+	\caption{Contesto d'uso del sistema all'interno del disaster-management cycle}
+	\label{fig:contesto}
 \end{figure}
- \newpage
-Raccogliendo alcune testimonianze sul terremoto che colpì l'Aquila nel 2009, si è individuato un fenomeno comune nel disaster management.\\
-I soccorritori, sopratutto quelli non locali, ebbero difficoltà a raggiungere le vittime e fornire loro assistenza. Infatti un evento come il terremoto può modificare profondamente la topografia di intere regioni, questi cambiamenti rendono i sistemi GPS-based obsoleti. Ad esempio il cedimento del manto stradale di una certa strada potrebbe renderla impercorribile; un sistema come il navigatore potrebbe indicare ad una squadra di soccorsi un percorso che comprende tale strada, per quest'ultimi non c'è modo di sapere a priori se quel percorso è percorribile se non attraversandola metro dopo metro. \\
-In queste situazioni la presenza di un sistema multiagente \cite{RESPONSE} costituisce un valido aiuto a chi gestisce l'emergenza, permettendo di avere dati aggiornabili e dinamici, prodotti dagli "agenti" (umani e non) direttamente sul campo. \\
-Il lavoro di questa tesi è quindi la progettazione e lo sviluppo di un'applicazione mobile geolocalizzata con i seguenti main goals:
-\begin{itemize}
-\item Segnalare la posizione di un'emergenza
-\item Visualizzare sulla mappa lo stato generale dell'area colpita e dei luoghi d'interesse  
-\item Visualizzare lo status dei propri famigliari
-\item Interagire con un sistema centrale multiagente
-\end{itemize}
-Nel contesto d'uso la rete è congestionata/assente, quindi è importante installare l'applicazione in tempi di pace; inoltre pur avendo un'interfaccia usabile, alcuni utenti con scarsa conoscenza nell'uso dei dispositivi mobili potrebbero dover essere istruiti. Queste attivita sono tipiche della fase di preparedness (vedi \ref{fasi}).\\
-Non possiamo eliminare del tutto il \textit{Pericolo} di un disastro, tuttavia possiamo fornire uno strumento utile ad aumentare la \textit{Resilienza} (vedi \ref{vuln}) della comunità, di conseguenza diminuire il \textit{Rischio} e l'impatto di un disastro, ergo le vittime.\\
+La soluzione proposta dal team, per maggiori dettagli si consiglia la visione del documento: "Disaster Response: a Multi-Agent based Approach" \cite{RESPONSE}, integra l'attività di pianificazione e la \textbf{conoscenza dinamica del territorio} all'interno di un sistema multiagent-oriented.\\
+La conoscenza dinamica è una caratteristica cruciale per sistemi di questo dominio applicativo; infatti un disastro naturale come il terremoto, può cambiare profondamente la morfologia del territorio, di conseguenza gli strumenti OGB (Only-GPS-Based) sono obsoleti. I soccorritori, sopratutto quelli non locali, potrebbero avere molte difficoltà nel raggiungere le vittime.
 \newpage
-
+L'acquisizione dinamica d'informazioni, benché utile alla conoscenza morfologica del territorio, è rilevante soprattutto per il coordinamento generale dei soccorritori, i cui piani d'azione non possono basarsi soltanto sulle considerazioni fatte nella fase di \textit{Preparedness} (vedi \ref{fasi}).\\
+ Le strategie adottate dipendono dall'analisi preventiva della vulnerabilità (vedi \ref{vuln}), che a sua volta, dipende dalla stima del potenziale impatto di un disastro.\\
+ E' chiaro che, in questo contesto, la disponibilità di dati dinamici permetterebbe ai soccorritori di rielabolare tali strategie a seconda del reale impatto. 
+L'utilizzo di un MAS (multy agent system) presenta altri vantaggi, tra questi i più significativi sono: la possibilità di distribuire il carico computazionale e l'aumento della robustezza globale del sistema per mezzo di funzioni avanzate come l'automonitoraggio e l'autodiagnosi.\\
+L'acquisizione dinamica delle informazioni può avvenire tramite droidi, sensori, robot e operatori umani; quest'ultimi utilizzando l'applicazione sviluppata in questa tesi, possono comunicare informazioni molto semplici e dirette tipiche del contesto (esempio "immediato aiuto qui") ai soccorritori. L'applicazione mobile risulterebbe uno strumento valido ed utilizzato dalle vittime, in accordo con i miti sfatati da D. Alexander (vedi \ref{comuni}), è più che ragionevole utilizzare l'enorme quantità di informazioni che possono provenire dai sopravvissuti. Si noti che nelle prime 12-24 ore dopo il disastro le persone tendono, con o senza il sistema, a trasmettersi brevi messaggi significativi come "sono vivo", " la strada è bloccata qui", "c'è urgente bisogno di aiuto" ect. In conclusione l'implementazione di tale sistema contribuirebbe ad aumentare la \textit{Resilienza} della comunità (vedi \ref{vuln}), ovvero \textit{l'impatto} (vedi l'equazione \ref{eq}) e quindi le vittime. 

@@ -1,1 +1,115 @@
 \chapter{L'applicazione lato utente}
+Nella prima parte di questo capitolo, vengono illustrati i requisiti di sistema che hanno guidato lo sviluppo dell'intera applicazione. Mentre nella parte finale verranno mostrate le schermate grafiche relative ai task principali.
+
+\section{Requisiti di sistema}
+La stesura dei requisiti di sistema è un processo imprenscindibile per la progettazione, nel nostro caso è il risultato di un processo iterativo basato sulla valutazione di un esperto.\\
+I requisiti sono divisi in:
+\begin{itemize}
+\item \textbf{Requisiti funzionali} indicano quello che il sistema deve fare
+\item \textbf{Requisiti non funzionali} vincoli sul sistema e il suo sviluppo
+\end{itemize}
+ 
+ \subsection{Requisiti funzionali}
+
+\begin{enumerate}
+\item Interazione mappa
+  \begin{itemize}
+     \item\textit{identificativo:} RF-1
+  \item\textit{Descrizione:} Il sistema deve permettere all’utente di interagire con la mappa, compiendo le azioni basilari quali: zoom In, zoom Out, CCW (Change Center View), click.
+  \end{itemize}
+  
+\item Impostazione POI
+  \begin{itemize}
+  \item\textit{identificativo:} RF-2
+  \item\textit{Descrizione:} Il sistema deve permettere all’utente di impostare una specifica porzione di mappa come un POI (point of interest).
+  \item\textit{ Razionale:} In questo modo l’utente può applicare un filtro sulla mappa (vedi RF-7)  e visualizzare rapidamente lo status dei luoghi d’interesse.
+  \end{itemize}
+  
+\item Impostazione FOI
+  \begin{itemize}
+  \item\textit{identificativo:} RF-3
+  \item\textit{Descrizione:} Il sistema deve permettere all’utente di impostare altri utenti del sistema come FOI (family of interest).
+  \item\textit{ Razionale:} l’utente può in questo modo applicare un filtro (vedi RF-7) e visualizzare in modo rapido lo status delle persone d’interesse.
+  \end{itemize}
+  
+  \item Segnalazione evento
+  \begin{itemize}
+  \item\textit{identificativo:} RF-4
+  \item\textit{Descrizione:} l’utente deve poter segnalare la posizione di un certo evento (vedi RNF-1). 
+La procedura standard di segnalazione deve avvenire sia cliccando su un punto della mappa sia tramite una schermata dedicata.
+Nel caso di rete congestionata o assente il sistema deve provvedere alla bufferizzazione delle richieste e avvisare di tale situazione l’utente stesso.
+  \item\textit{ Razionale:} In questo modo gli utenti contribuiscono all’aggiornamento dello status generale del territorio colpito.
+  \end{itemize}
+  
+   \item Aggiornamento status
+  \begin{itemize}
+  \item\textit{identificativo:} RF-5
+  \item\textit{Descrizione:} L’utente può cambiare il suo status (vedi RNF-4). Il sistema quindi deve comunicare immediatamente al server tale aggiornamento.
+  \item\textit{ Razionale:} In questo modo gli utenti contribuiscono a fornire informazioni dinamiche sul territorio colpito e su se stessi.
+  \end{itemize}
+  
+  \item Trusty data
+  \begin{itemize}
+  \item\textit{identificativo:} RF-6
+  \item\textit{Descrizione:} Il sistema deve informare l’utente sul grado di aggiornamento delle informazioni visualizzate, ovvero:
+    \begin{itemize}
+    \item Eventi
+    \item Status dei POI
+    \item Status dei FOI
+    \item mappe offline
+    \end{itemize}
+   L’attendibilità degli eventi è data dal numero di segnalazioni di tale evento nella relativa cella (vedi RNF-1) e dall’orario in cui è stata generata l’ultima    segnalazione.
+   \item\textit{ Razionale:} Nel contesto d’uso, la rete potrebbe collassare o più semplicemente gli utenti potrebbero non utilizzare il sistema per un certo periodo, in questo modo si garantisce la totale trasparenza delle informazioni fornite.
+  \end{itemize}
+  
+  \item Filtra mappa
+  \begin{itemize}
+  \item\textit{identificativo:} RF-7
+  \item\textit{Descrizione:} Il sistema deve permettere all’utente di filtrare le informazioni visibili sulla mappa in base a:
+    \begin{itemize}
+    \item propri POI
+    \item tipo eventi
+    \item propri FOI
+    \end{itemize}
+   \item\textit{ Razionale:} La mappa visualizzata dall’utente potrebbe contenere un numero elevato di informazioni.
+  \end{itemize}
+  
+    \item Modalità offline
+  \begin{itemize}
+  \item\textit{identificativo:} RF-8
+  \item\textit{Descrizione:} Il sistema deve salvare porzioni di mappa visualizzate dall’utente attraverso l’interazione base (vedi RF-1) nella memoria temporale, inoltre l’utente deve poter scaricare una specifica center view su diversi livelli di zoom. Il sistema quindi deve permettere all’utente di utilizzare la modalità offline, in questo caso la rete verrà utilizzata solamente per inviare e ricevere aggiornamenti riguardo:
+    \begin{itemize}
+    \item POI e NPOI
+    \item FOI e NFOI
+    \item Eventi
+    \end{itemize}
+   \item\textit{ Razionale:} L’utente potrebbe voler utilizzare la modalità offline per risparmiare dati o per la  pessima connessione
+  \end{itemize}
+  
+   \item Markercluster
+  \begin{itemize}
+  \item\textit{identificativo:} RF-9
+  \item\textit{Descrizione:} Il sistema per livelli di zoom inferiori a 16 deve provvedere a raggruppare i marker, in un unico markerclusterer mostrando l’informazione in modo quantitativo.
+  \end{itemize}
+  
+    \item Aggiornamento dati persistenti
+  \begin{itemize}
+  \item\textit{identificativo:} RF-10
+  \item\textit{Descrizione:} Il sistema deve periodicamente richiedere al server l’aggiornamento dei dati persistenti (vedi RNF-2).
+Inoltre l’utente può richiedere l’aggiornamento in qualsiasi momento
+  \end{itemize}
+  
+   \item Salta a
+  \begin{itemize}
+  \item\textit{identificativo:} RF-11
+  \item\textit{Descrizione:} Il sistema deve permettere all’utente di spostare la propria center view al NPOI (nearest point of interest), al NFOI (nearest family of interest) o al riferimento di una notifica d’allerta (vedi RF-11) cliccando su di essa.
+   \item\textit{ Razionale:} L’utente potrebbe voler prestare soccorso al famigliare o visualizzare lo status del punto d’interesse più vicino a lui.
+  \end{itemize}
+  
+   \item Notifiche di allerta
+  \begin{itemize}
+  \item\textit{identificativo:} RF-12
+  \item\textit{Descrizione:} Il sistema deve notificare l’utente sull’aggiornamento dello status di un FOI o della segnalazione di un evento all’interno di un POI.
+  \end{itemize}
+  
+\end{enumerate}

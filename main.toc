@@ -2,24 +2,26 @@
 \select@language {italian}
 \contentsline {chapter}{Sommario}{1}{chapter*.3}
 \contentsline {chapter}{Introduzione}{2}{chapter*.4}
-\contentsline {chapter}{\numberline {1}Lo scenario applicativo}{3}{chapter.1}
-\contentsline {section}{\numberline {1.1}La vulnerabilit\IeC {\`a}}{3}{section.1.1}
-\contentsline {section}{\numberline {1.2}Le fasi di emergency management}{6}{section.1.2}
-\contentsline {section}{\numberline {1.3}I luoghi comuni sui disastri}{9}{section.1.3}
-\contentsline {section}{\numberline {1.4}Il contesto d'uso}{14}{section.1.4}
-\contentsline {chapter}{\numberline {2}OpenStreetMap}{16}{chapter.2}
-\contentsline {section}{\numberline {2.1}Cos'\IeC {\`e} OpenStreetMap ?}{16}{section.2.1}
-\contentsline {section}{\numberline {2.2}Perch\IeC {\`e} il mondo ha bisogno di OSM}{19}{section.2.2}
-\contentsline {section}{\numberline {2.3}OpenStreetMap vs Google Maps}{21}{section.2.3}
-\contentsline {chapter}{\numberline {3}L'applicazione lato utente}{26}{chapter.3}
-\contentsline {chapter}{\numberline {4}L'implementazione}{27}{chapter.4}
-\contentsline {section}{\numberline {4.1}Le applicazioni cross-platform}{27}{section.4.1}
-\contentsline {section}{\numberline {4.2}PhoneGap}{29}{section.4.2}
-\contentsline {section}{\numberline {4.3}Ratchet}{33}{section.4.3}
-\contentsline {section}{\numberline {4.4}Leaflet}{36}{section.4.4}
-\contentsline {section}{\numberline {4.5}La griglia trasparente}{38}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}L'algoritmo di Santiago}{39}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Il codice}{44}{subsection.4.5.2}
-\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{46}{chapter.5}
-\contentsline {chapter}{Ringraziamenti}{47}{chapter*.5}
-\contentsline {chapter}{Bibliografia}{48}{chapter*.6}
+\contentsline {chapter}{\numberline {1}Lo scenario applicativo}{4}{chapter.1}
+\contentsline {section}{\numberline {1.1}La vulnerabilit\IeC {\`a}}{4}{section.1.1}
+\contentsline {section}{\numberline {1.2}Le fasi di emergency management}{7}{section.1.2}
+\contentsline {section}{\numberline {1.3}I luoghi comuni sui disastri}{10}{section.1.3}
+\contentsline {section}{\numberline {1.4}Il contesto d'uso}{15}{section.1.4}
+\contentsline {chapter}{\numberline {2}OpenStreetMap}{17}{chapter.2}
+\contentsline {section}{\numberline {2.1}Cos'\IeC {\`e} OpenStreetMap ?}{17}{section.2.1}
+\contentsline {section}{\numberline {2.2}Perch\IeC {\`e} il mondo ha bisogno di OSM}{20}{section.2.2}
+\contentsline {section}{\numberline {2.3}OpenStreetMap vs Google Maps}{22}{section.2.3}
+\contentsline {chapter}{\numberline {3}L'applicazione lato utente}{27}{chapter.3}
+\contentsline {section}{\numberline {3.1}Requisiti di sistema}{27}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Requisiti funzionali}{27}{subsection.3.1.1}
+\contentsline {chapter}{\numberline {4}L'implementazione}{31}{chapter.4}
+\contentsline {section}{\numberline {4.1}Le applicazioni cross-platform}{31}{section.4.1}
+\contentsline {section}{\numberline {4.2}PhoneGap}{33}{section.4.2}
+\contentsline {section}{\numberline {4.3}Ratchet}{37}{section.4.3}
+\contentsline {section}{\numberline {4.4}Leaflet}{40}{section.4.4}
+\contentsline {section}{\numberline {4.5}La griglia trasparente}{42}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}L'algoritmo di Santiago}{43}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Il codice}{48}{subsection.4.5.2}
+\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{50}{chapter.5}
+\contentsline {chapter}{Ringraziamenti}{51}{chapter*.5}
+\contentsline {chapter}{Bibliografia}{52}{chapter*.6}
