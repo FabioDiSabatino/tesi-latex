@@ -69,6 +69,7 @@ riassume lo stato dell'arte riguardo la compatibilità e l'accessibilità che il
 \end{figure}
 
 \section{Ratchet}
+\label{ratchet}
 Il solo utilizzo del framework PhoneGap non è sufficiente per realizzare un'applicazione degna di nota. L'interfaccia grafica costituisce un'elemento fondamentale nelle moderne applicazioni mobili. Inoltre, se ben progettata, contribuisce ad aumentare la user experience \cite{EXPERIENCE} e in generale l'usabilità del sistema stesso. A tale proposito è stato utilizzato il framework opens source \textbf{Ratchet} [http://goratchet.com/].
 
 \begin{figure}[H]
@@ -123,7 +124,7 @@ Leaflet è stato progettato per avere alte prestazioni ed facilmente utilizzabil
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.7]{Implementazione/leaflet.png}
+	\includegraphics[scale=0.5]{Implementazione/leaflet.png}
 	\caption{Il logo della libreria Leaflet}
 	\label{fig:leaflet}
 \end{figure}
@@ -169,6 +170,7 @@ Gli algoritmi più utilizzati per il calcolo della distanza tra due punti, utili
 E' bene dire che mentre il risultato ottenuto tramite la formula di Haversine può avere un'errore dello 0,3\%  quello di Vincenty è molto più accurato, con un errore di 0.5mm circa; questa precisione si ha a discapito di un costo computazionale più elevato. Per brevi distanze i metodi tendono invece a convergere.
 \newpage
 \subsection{L'algoritmo di Santiago}
+\label{santiago}
 Con entrambi gli algoritmi è stato verificato che una variazione unitaria di $10^{-4} $ gradi in latitudine corrisponde ad una distanza di 11 mt, 8 mt se in longitudine. Partendo da questo risultato si è così ideato il seguente algoritmo.
 
 \begin{enumerate}

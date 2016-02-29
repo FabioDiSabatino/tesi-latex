@@ -14,14 +14,16 @@
 \contentsline {chapter}{\numberline {3}L'applicazione lato utente}{27}{chapter.3}
 \contentsline {section}{\numberline {3.1}Requisiti di sistema}{27}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Requisiti funzionali}{27}{subsection.3.1.1}
-\contentsline {chapter}{\numberline {4}L'implementazione}{31}{chapter.4}
-\contentsline {section}{\numberline {4.1}Le applicazioni cross-platform}{31}{section.4.1}
-\contentsline {section}{\numberline {4.2}PhoneGap}{33}{section.4.2}
-\contentsline {section}{\numberline {4.3}Ratchet}{37}{section.4.3}
-\contentsline {section}{\numberline {4.4}Leaflet}{40}{section.4.4}
-\contentsline {section}{\numberline {4.5}La griglia trasparente}{42}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}L'algoritmo di Santiago}{43}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Il codice}{48}{subsection.4.5.2}
-\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{50}{chapter.5}
-\contentsline {chapter}{Ringraziamenti}{51}{chapter*.5}
-\contentsline {chapter}{Bibliografia}{52}{chapter*.6}
+\contentsline {subsection}{\numberline {3.1.2}Requisiti non funzionali}{31}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}L'interfaccia grafica}{34}{section.3.2}
+\contentsline {chapter}{\numberline {4}L'implementazione}{54}{chapter.4}
+\contentsline {section}{\numberline {4.1}Le applicazioni cross-platform}{54}{section.4.1}
+\contentsline {section}{\numberline {4.2}PhoneGap}{56}{section.4.2}
+\contentsline {section}{\numberline {4.3}Ratchet}{60}{section.4.3}
+\contentsline {section}{\numberline {4.4}Leaflet}{63}{section.4.4}
+\contentsline {section}{\numberline {4.5}La griglia trasparente}{65}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}L'algoritmo di Santiago}{66}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Il codice}{71}{subsection.4.5.2}
+\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{73}{chapter.5}
+\contentsline {chapter}{Ringraziamenti}{74}{chapter*.5}
+\contentsline {chapter}{Bibliografia}{75}{chapter*.6}

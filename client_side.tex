@@ -1,6 +1,5 @@
 \chapter{L'applicazione lato utente}
-Nella prima parte di questo capitolo, vengono illustrati i requisiti di sistema che hanno guidato lo sviluppo dell'intera applicazione. Mentre nella parte finale verranno mostrate le schermate grafiche relative ai task principali.
-
+Nella prima parte di questo capitolo, vengono illustrati i requisiti di sistema che hanno guidato lo sviluppo dell'intera applicazione. Mentre nella parte finale verrà mostrata l'interfaccia grafica realizzata con il framework Ratchet (vedi \ref{ratchet}).
 \section{Requisiti di sistema}
 La stesura dei requisiti di sistema è un processo imprenscindibile per la progettazione, nel nostro caso è il risultato di un processo iterativo basato sulla valutazione di un esperto.\\
 I requisiti sono divisi in:
@@ -14,43 +13,43 @@ I requisiti sono divisi in:
 \begin{enumerate}
 \item Interazione mappa
   \begin{itemize}
-     \item\textit{identificativo:} RF-1
+     \item\textit{Identificativo:} RF-1
   \item\textit{Descrizione:} Il sistema deve permettere all’utente di interagire con la mappa, compiendo le azioni basilari quali: zoom In, zoom Out, CCW (Change Center View), click.
   \end{itemize}
-  
+  \newpage
 \item Impostazione POI
   \begin{itemize}
-  \item\textit{identificativo:} RF-2
+  \item\textit{Identificativo:} RF-2
   \item\textit{Descrizione:} Il sistema deve permettere all’utente di impostare una specifica porzione di mappa come un POI (point of interest).
-  \item\textit{ Razionale:} In questo modo l’utente può applicare un filtro sulla mappa (vedi RF-7)  e visualizzare rapidamente lo status dei luoghi d’interesse.
+  \item\textit{Razionale:} In questo modo l’utente può applicare un filtro sulla mappa (vedi RF-7)  e visualizzare rapidamente lo status dei luoghi d’interesse.
   \end{itemize}
   
 \item Impostazione FOI
   \begin{itemize}
-  \item\textit{identificativo:} RF-3
+  \item\textit{Identificativo:} RF-3
   \item\textit{Descrizione:} Il sistema deve permettere all’utente di impostare altri utenti del sistema come FOI (family of interest).
-  \item\textit{ Razionale:} l’utente può in questo modo applicare un filtro (vedi RF-7) e visualizzare in modo rapido lo status delle persone d’interesse.
+  \item\textit{Razionale:} l’utente può in questo modo applicare un filtro (vedi RF-7) e visualizzare in modo rapido lo status delle persone d’interesse.
   \end{itemize}
   
   \item Segnalazione evento
   \begin{itemize}
-  \item\textit{identificativo:} RF-4
+  \item\textit{Identificativo:} RF-4
   \item\textit{Descrizione:} l’utente deve poter segnalare la posizione di un certo evento (vedi RNF-1). 
 La procedura standard di segnalazione deve avvenire sia cliccando su un punto della mappa sia tramite una schermata dedicata.
 Nel caso di rete congestionata o assente il sistema deve provvedere alla bufferizzazione delle richieste e avvisare di tale situazione l’utente stesso.
-  \item\textit{ Razionale:} In questo modo gli utenti contribuiscono all’aggiornamento dello status generale del territorio colpito.
+  \item\textit{Razionale:} In questo modo gli utenti contribuiscono all’aggiornamento dello status generale del territorio colpito.
   \end{itemize}
   
    \item Aggiornamento status
   \begin{itemize}
-  \item\textit{identificativo:} RF-5
+  \item\textit{Identificativo:} RF-5
   \item\textit{Descrizione:} L’utente può cambiare il suo status (vedi RNF-4). Il sistema quindi deve comunicare immediatamente al server tale aggiornamento.
-  \item\textit{ Razionale:} In questo modo gli utenti contribuiscono a fornire informazioni dinamiche sul territorio colpito e su se stessi.
+  \item\textit{Razionale:} In questo modo gli utenti contribuiscono a fornire informazioni dinamiche sul territorio colpito e su se stessi.
   \end{itemize}
   
   \item Trusty data
   \begin{itemize}
-  \item\textit{identificativo:} RF-6
+  \item\textit{Identificativo:} RF-6
   \item\textit{Descrizione:} Il sistema deve informare l’utente sul grado di aggiornamento delle informazioni visualizzate, ovvero:
     \begin{itemize}
     \item Eventi
@@ -64,26 +63,26 @@ Nel caso di rete congestionata o assente il sistema deve provvedere alla bufferi
   
   \item Filtra mappa
   \begin{itemize}
-  \item\textit{identificativo:} RF-7
+  \item\textit{Identificativo:} RF-7
   \item\textit{Descrizione:} Il sistema deve permettere all’utente di filtrare le informazioni visibili sulla mappa in base a:
     \begin{itemize}
     \item propri POI
     \item tipo eventi
     \item propri FOI
     \end{itemize}
-   \item\textit{ Razionale:} La mappa visualizzata dall’utente potrebbe contenere un numero elevato di informazioni.
+   \item\textit{Razionale:} La mappa visualizzata dall’utente potrebbe contenere un numero elevato di informazioni.
   \end{itemize}
   
     \item Modalità offline
   \begin{itemize}
-  \item\textit{identificativo:} RF-8
+  \item\textit{Identificativo:} RF-8
   \item\textit{Descrizione:} Il sistema deve salvare porzioni di mappa visualizzate dall’utente attraverso l’interazione base (vedi RF-1) nella memoria temporale, inoltre l’utente deve poter scaricare una specifica center view su diversi livelli di zoom. Il sistema quindi deve permettere all’utente di utilizzare la modalità offline, in questo caso la rete verrà utilizzata solamente per inviare e ricevere aggiornamenti riguardo:
     \begin{itemize}
     \item POI e NPOI
     \item FOI e NFOI
     \item Eventi
     \end{itemize}
-   \item\textit{ Razionale:} L’utente potrebbe voler utilizzare la modalità offline per risparmiare dati o per la  pessima connessione
+   \item\textit{Razionale:} L’utente potrebbe voler utilizzare la modalità offline per risparmiare dati o per la  pessima connessione
   \end{itemize}
   
    \item Markercluster
@@ -101,15 +100,268 @@ Inoltre l’utente può richiedere l’aggiornamento in qualsiasi momento
   
    \item Salta a
   \begin{itemize}
-  \item\textit{identificativo:} RF-11
+  \item\textit{Identificativo:} RF-11
   \item\textit{Descrizione:} Il sistema deve permettere all’utente di spostare la propria center view al NPOI (nearest point of interest), al NFOI (nearest family of interest) o al riferimento di una notifica d’allerta (vedi RF-11) cliccando su di essa.
-   \item\textit{ Razionale:} L’utente potrebbe voler prestare soccorso al famigliare o visualizzare lo status del punto d’interesse più vicino a lui.
+   \item\textit{Razionale:} L’utente potrebbe voler prestare soccorso al famigliare o visualizzare lo status del punto d’interesse più vicino a lui.
   \end{itemize}
   
    \item Notifiche di allerta
   \begin{itemize}
-  \item\textit{identificativo:} RF-12
+  \item\textit{Identificativo:} RF-12
   \item\textit{Descrizione:} Il sistema deve notificare l’utente sull’aggiornamento dello status di un FOI o della segnalazione di un evento all’interno di un POI.
   \end{itemize}
   
 \end{enumerate}
+
+ \subsection{Requisiti non funzionali}
+ 
+\begin{enumerate}
+   \item Dati griglia
+  \begin{itemize}
+  \item\textit{Identificativo:} RNF-1
+  \item\textit{Descrizione:} la mappa è divisa da una griglia con celle di 22x16 mt (vedi \ref{santiago}).
+   \item\textit{Razionale:} Più utenti vicini potrebbero utilizzare il sistema, senza tolleranza una porzione di mappa potrebbe essere saturata dalla  visualizzazione di eventi omogenei.
+  \end{itemize}
+  
+  \item Dati persistenza
+  \begin{itemize}
+  \item\textit{Identificativo:} RNF-2
+  \item\textit{Descrizione:} il sistema deve memorizzare in modo permanente, attraverso un database locale, i seguenti dati:
+	\begin{itemize}
+	\item FOI
+	\item POI
+	\item eventi visualizzati nella center view
+	\item porzioni di mappa
+	\end{itemize}
+  \end{itemize}
+  
+    \item Dati aggiornabili
+  \begin{itemize}
+  \item\textit{Identificativo:} RNF-3
+  \item\textit{Descrizione:} I dati memorizzati (vedi RNF-2) sono aggiornabili secondo le modalità precedentemente descritte (vedi RF-9).
+  \item\textit{Razionale:} Le informazioni cambiano dinamicamente, alcune emergenze potrebbero essere state risolte, altre potrebbero nascere successivamente.
+  \end{itemize}
+  \newpage
+  \item Dati tipi
+  \begin{itemize}
+  \item\textit{Identificativo:} RNF-4
+  \item\textit{Descrizione:} L’utente può scegliere il tipo di evento da segnalare (vedi RF-5) tra i seguenti:
+	\begin{itemize}
+	\item edificio crollato
+	\item incendio 
+	\item allagamento
+	\item strada interrotta
+	\item persona intrappolata
+	\item persona ferita
+	\item persona non autosufficiente
+	\end{itemize}
+	Inoltre può scegliere il suo status, che verrà notificato agli utenti che lo hanno impostato come FOI, tra:
+	\begin{itemize}
+	\item sto bene
+	\item ferito lieve
+	\item ferito
+	\item intrappolato
+	\item intrappolato e ferito
+	\end{itemize}
+  \end{itemize}
+ 
+    \item Ambientale tecnico
+  \begin{itemize}
+  \item\textit{Identificativo:} RNF-5
+  \item\textit{Descrizione:} Il sistema è un’applicazione per dispositivi mobili cross platform, si utilizza il framework phonegap e le tecnologie proprie alla programmazione web:
+  \begin{itemize}
+  \item HTML
+  \item CSS
+  \item Javascript
+  \end{itemize}
+E’ richiesto l’accesso alla rete internet e l’utilizzo del gps integrato del dispositivo
+  \end{itemize}
+ \newpage
+\item Ambientale sociale
+  \begin{itemize}
+  \item\textit{Identificativo:} RNF-6
+  \item\textit{Descrizione:} I dati sono prodotti dagli utenti che attraverso il sistema cooperano per arricchire il server di informazioni vitali sul territorio colpito. Essendo quindi un processo distribuito particolare attenzione deve essere posta all controllo dell’attendibilità degli eventi segnalati per tutti gli utenti (vedi RNF-1)
+  \end{itemize}
+
+  \item Ambientale fisico
+  \begin{itemize}
+  \item\textit{Identificativo:} RNF-7
+  \item\textit{Descrizione:} Il sistema potrebbe essere utilizzato in svariati contesti d’uso, di seguito i più comuni:
+	\begin{itemize}
+	\item assenza di luce
+	\item presenza di folla
+	\item Scarsa visibilità
+	\item forti raffiche di vento
+	\item allagamenti
+	\item incendi
+	\end{itemize}
+    \item\textit{Razionale:} Essendo un sistema il cui obiettivo principale è fornire un supporto utile ai soccorritori nel caso di eventi catastrofici, i contesti d’uso dell’applicazione possono essere imprevedibili. Tuttavia si può rispondere al meglio attraverso una buona progettazione del sistema, utilizzando i principi dell’interaction design.
+  \end{itemize}
+  
+\item Utenti
+  \begin{itemize}
+  \item\textit{Identificativo:} RNF-8
+  \item\textit{Descrizione:} la fascia di utenti del sistema è molto ampia, non è possibile stabilirne con certezza gli estremi.
+  \end{itemize}
+  
+  \item Usabilità
+  \begin{itemize}
+  \item\textit{Identificativo:} RNF-9
+  \item\textit{Descrizione:}Il sistema deve essere il più usabile possibile, nel contesto d’uso gli utenti potrebbero essere spaventati o perdere lucidità
+  \end{itemize}
+  
+\end{enumerate}
+
+\section{L'interfaccia grafica}
+In questo paragrafo verranno illustrati i task principali e le corrispettive schermate dell'applicazione.
+
+\begin{itemize}
+\item \textbf{Dashboard:} è la home del sistema, da qui l'utente può accedere a tutte le sue funzionalità.
+   \begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/dash.png}
+	\caption{Dashboard}
+	\label{fig:logo_OSM}
+\end{figure}
+\newpage
+\item \textbf{How are you?:} Per aggiornare il proprio stato bisogna cliccare sul bottone giallo, come in Fig \ref{fig:buttoncomestai}, quindi possiamo scegliere da una lista predefinita (Fig \ref{fig:lista}).
+
+   \begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/tapbuttoncomestai.png}
+	\caption{Tap del buttone \textit{"How are you?"}}
+	\label{fig:buttoncomestai}
+\end{figure}
+   \begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/comestaitap.png}
+	\caption{Lista predefinita di stati}
+	\label{fig:lista}
+\end{figure}
+Quindi basterà cliccare sul tasto in alto a destra:\textit{"Public"} per rendere effettivo il nostro aggiornamento.
+\newpage
+
+\item \textbf{Signal event:} Per segnalare un'emergenza bisogna cliccare, nella dashboard, sul bottone rosso come in Fig \ref{fig:buttonsegnala}, come per gli stati possiamo scegliere l'emergenza da segnalare da una lista predefinita( Fig \ref{fig:lista-em}).
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/tapbuttonsegnala.png}
+	\caption{Tap del bottone \textit{"Signal event"}}
+	\label{fig:buttonsegnala}
+\end{figure}
+   \begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/segnalatap.png}
+	\caption{Lista predefinita dell'emergenze}
+	\label{fig:lista-em}
+\end{figure}
+Quindi premendo sul bottone \textit{"Send signal"}, avremo la possibilità di usare la nostra posizione oppure di utilizzare la mappa (Fig \ref{fig:sceltasignal}).
+   \begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/scelta.png}
+	\caption{Popup per scegliere la posizione dell'emergenza }
+	\label{fig:sceltasignal}
+	\end{figure}
+	\newpage
+\item \textbf{Where?:} se si decide di utilizzare la mappa per segnalare la posizione, tappando come in Fig \ref{fig:sceltamappa}, allora si dovrà cliccare su un punto della mappa che il sistema ci mostrerà (Fig \ref{fig:mappa-segnala}).
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/sceltamap.png}
+	\caption{Click sull'elemento \textit{"locate on the map"} }
+	\label{fig:sceltamappa}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/mappasegnala.png}
+	\caption{Mappa mostrata dal sistema }
+	\label{fig:mappa-segnala}
+\end{figure}
+Quindi basterà cliccare sul tasto \textit{"Done"} per segnalare la posizione desiderata.
+\newpage
+\item \textbf{Visualizza FOI:} per visualizzare lo stato dei nostri cari bisogna tappare, nella schermata della dashboard, il bottone in basso a sinistra come in Fig \ref{fig:tapfoi}, ed ottenere una lista (Fig \ref{fig:lista-foi}) dei nostri FOI. Questa sarà ordinata per default in base alla gravità del loro stato.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/tapfoi.png}
+	\caption{Tap da fare per accedere alla lista dei FOI }
+	\label{fig:tapfoi}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/listafoi.png}
+	\caption{Lista dei foi ordinata per default in base alla gravità }
+	\label{fig:lista-foi}
+\end{figure}
+\newpage
+\item \textbf{Ordina FOI:} come detto, la lista dei nostri FOI sarà ordinata per default in base alla gravità dello stato, tuttavia è possibile ordinarla anche a seconda della vicinanza o del più recente aggiornamento semplicemente cliccando sull'icona del menu a comparsa, Fig \ref{fig:comparsa}, quindi cliccare sulla relativa etichetta (Fig \ref{fig:etichetta}).
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/comparsa.png}
+	\caption{Tap per aprire il menu a comparsa }
+	\label{fig:comparsa}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/etichetta.png}
+	\caption{Tap da fare per ordinare la lista secondo i tre parametri }
+	\label{fig:etichetta}
+\end{figure}
+\newpage
+\item \textbf{Visualizza FOI sulla mappa:} oltre alla lista, è possibile visualizzare i propri FOI sulla mappa. Dalla vista precedente basta cliccare sul bottone \textit{"Map"}, come in Fig \ref{fig:mapfoi}. La mappa verrà centrata sul primo foi della lista e quindi in base all'ordinamento di essa, nell'esempio di Fig \ref{fig:mappafoi}, la mappa era ordinata per vicinanza.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/mapfoi.png}
+	\caption{Tap per visualizzare i FOI sulla mappa }
+	\label{fig:mapfoi}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/mappafoi.png}
+	\caption{Mappa centrata sul FOI più vicino }
+	\label{fig:mappafoi}
+\end{figure}
+E' possibile comunque, con le stesse modalità della lista, centrare la visuale della mappa in base al FOI più vicino, più grave o che abbia aggiornato più recentemente il suo stato. Inoltre tappando il marker è possibile visualizzare il relativo stato e l'ora in cui è stato aggiornato (Fig \ref{fig:tapmarker}).
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/tapmarker.png}
+	\caption{Tap sul marker del FOI }
+	\label{fig:tapmarker}
+\end{figure}
+
+\newpage
+
+\item \textbf{Clustermarker FOI:} come specificato nei requisiti, i marker dei FOI sulla mappa sono raggruppati in un markecluster (Fig \ref{fig:markercluster}). Cliccando su di esso è possibile vedere quali sono i FOI raggrupati (Fig \ref{fig:markerfoi}). 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/markercluster.png}
+	\caption{Due markercluster contenenti rispettivamente due e tre FOI }
+	\label{fig:markercluster}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/markerfoi.png}
+	\caption{Tap su un markercluster contenente cinque FOI }
+	\label{fig:markerfoi}
+\end{figure}
+\newpage
+\item\textbf{ POI:} le modalità di interazioni e le schermate sono analoghe a quelle viste per i FOI. \\
+Dalla dashboard bisogna cliccare sul bottone in fondo, come in Fig \ref{fig:buttonpoi} per accedere alle varie funzioni e modalità di visualizzazione dei propri POI.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/buttonpoi.png}
+	\caption{Tap da fare per accedere ai propri POI }
+	\label{fig:buttonpoi}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/poilist.png}
+	\caption{Lista dei POI ordinata per default in base al più recente }
+	\label{fig:poilist}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=1]{interfaccia/tappoimarker.png}
+	\caption{Tap sul marker di un POI }
+	\label{fig:poilist}
+\end{figure}
+\newpage
+\end{itemize}
