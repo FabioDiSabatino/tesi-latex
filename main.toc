@@ -16,14 +16,14 @@
 \contentsline {subsection}{\numberline {3.1.1}Requisiti funzionali}{27}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Requisiti non funzionali}{31}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}L'interfaccia grafica}{34}{section.3.2}
-\contentsline {chapter}{\numberline {4}L'implementazione}{54}{chapter.4}
-\contentsline {section}{\numberline {4.1}Le applicazioni cross-platform}{54}{section.4.1}
-\contentsline {section}{\numberline {4.2}PhoneGap}{56}{section.4.2}
-\contentsline {section}{\numberline {4.3}Ratchet}{60}{section.4.3}
-\contentsline {section}{\numberline {4.4}Leaflet}{63}{section.4.4}
-\contentsline {section}{\numberline {4.5}La griglia trasparente}{65}{section.4.5}
-\contentsline {subsection}{\numberline {4.5.1}L'algoritmo di Santiago}{66}{subsection.4.5.1}
-\contentsline {subsection}{\numberline {4.5.2}Il codice}{71}{subsection.4.5.2}
-\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{73}{chapter.5}
-\contentsline {chapter}{Ringraziamenti}{74}{chapter*.5}
-\contentsline {chapter}{Bibliografia}{75}{chapter*.6}
+\contentsline {chapter}{\numberline {4}L'implementazione}{44}{chapter.4}
+\contentsline {section}{\numberline {4.1}Le applicazioni cross-platform}{44}{section.4.1}
+\contentsline {section}{\numberline {4.2}PhoneGap}{46}{section.4.2}
+\contentsline {section}{\numberline {4.3}Ratchet}{50}{section.4.3}
+\contentsline {section}{\numberline {4.4}Leaflet}{53}{section.4.4}
+\contentsline {section}{\numberline {4.5}La griglia trasparente}{55}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}L'algoritmo di Santiago}{56}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Il codice}{61}{subsection.4.5.2}
+\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{63}{chapter.5}
+\contentsline {chapter}{Ringraziamenti}{64}{chapter*.5}
+\contentsline {chapter}{Bibliografia}{65}{chapter*.6}
