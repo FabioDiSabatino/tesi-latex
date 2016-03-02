@@ -169,7 +169,7 @@ Tornando al nostro problema, la soluzione trovata si basa sul calcolo della dist
 Gli algoritmi più utilizzati per il calcolo della distanza tra due punti, utilizzano le formule di Haversine e Vincenty, il primo si basa sull'approssimazione della terra ad una sfera perfetta, mentre il secondo la modelizza in uno sferoide oblato. \\
 E' bene dire che mentre il risultato ottenuto tramite la formula di Haversine può avere un'errore dello 0,3\%  quello di Vincenty è molto più accurato, con un errore di 0.5mm circa; questa precisione si ha a discapito di un costo computazionale più elevato. Per brevi distanze i metodi tendono invece a convergere.
 \newpage
-\subsection{L'algoritmo di Santiago}
+\subsection{L'algoritmo Santiago}
 \label{santiago}
 Con entrambi gli algoritmi è stato verificato che una variazione unitaria di $10^{-4} $ gradi in latitudine corrisponde ad una distanza di 11 mt, 8 mt se in longitudine. Partendo da questo risultato si è così ideato il seguente algoritmo.
 
@@ -232,7 +232,7 @@ Così facendo tutti gli eventi/persone vengono mappati al centro delle varie cel
 \end{figure}
 \newpage
 \subsection{Il codice}
-Vediamo quindi il codice \textit{Javascript} utilizzato per implementare l'algoritmo di Santiago. La prima funzione si occupa di calcolare il sistema e quindi la posizione all'interno di esso.
+Vediamo quindi il codice \textit{Javascript} utilizzato per implementare l'algoritmo di Santiago. La prima funzione calcola il sistema e la posizione dell'evento o della persona all'interno di esso.
 \begin{lstlisting} [language=JavaScript]
 
 latLng->{lat:Number,lng:Number}

@@ -1,5 +1,11 @@
 \chapter{L'applicazione lato utente}
 Nella prima parte di questo capitolo, vengono illustrati i requisiti di sistema che hanno guidato lo sviluppo dell'intera applicazione. Mentre nella parte finale verranno mostrati i task principali e le relative schermate dell'interfaccia realizzata con il framework Ratchet (vedi \ref{ratchet}).
+\section{I concetti principali}
+La progettazione dell'applicazione è stata guidata, oltre allo studio di numerosi documenti riguardanti il contesto d'uso, dalla definizione di alcuni concetti chiave. \\
+Nel contesto d'uso, le persone sono interessate a conoscere lo stato dei propri cari e di alcuni luoghi d'interesse. Questa osservazione è stata implementata nei concetti di Friends Of Interest e Point Of Interest; i FOI e i POI rappresentano quindi l'insieme delle persone e dei luoghi per i quali l'utente ritiene rilevante conoscere lo stato in uno scenario di disatro ambientale e/o umano.\\
+Un'altra questione importante è l'attendibilità delle informazioni mostrate; per questo motivo ogni stato, che sia un FOI o un POI, è correllato dalla data e l'ora in cui è stato "prodotto". Per i POI l'attendibilità è rafforzata dal numero di segnalazioni di tale emergenza; infatti dato che chiunque, tramite una procedura standard, potrebbe segnalare un'emergenza in quello specifico luogo ha senso considerarlo come un buon indice di attendibilità dell'informazione, senza trascurare però quei luoghi (come le case indipendenti) che avranno un numero relativamente più basso di segnalazioni.\\
+Per i FOI oltre allo stato, si è pensato di utilizzare una sorta di "ping";  il dispositivo perdiodicamente e in base al numero degli utenti intorno a lui, invia un "bit" al sistema centrale, se allo scadere di un certo timeout, non si hanno notizie del dispositivo verrà considerato come spento. In questo modo gli utenti possono sapere se il dispositivo di un loro caro è spento, acceso o se egli stia usando l'applicazione. 
+
 \section{Requisiti di sistema}
 La stesura dei requisiti di sistema è un processo imprenscindibile per la progettazione, nel nostro caso è il risultato di un processo iterativo basato sulla valutazione di un esperto.\\
 I requisiti sono divisi in:
@@ -27,7 +33,7 @@ I requisiti sono divisi in:
 \item Impostazione FOI
   \begin{itemize}
   \item\textit{Identificativo:} RF-3
-  \item\textit{Descrizione:} Il sistema deve permettere all’utente di impostare altri utenti del sistema come FOI (family of interest).
+  \item\textit{Descrizione:} Il sistema deve permettere all’utente di impostare altri utenti del sistema come FOI (Friends Of Interest).
   \item\textit{Razionale:} l’utente può in questo modo applicare un filtro (vedi RF-7) e visualizzare in modo rapido lo status delle persone d’interesse.
   \end{itemize}
   
@@ -213,13 +219,15 @@ E’ richiesto l’accesso alla rete internet e l’utilizzo del gps integrato d
 \end{enumerate}
 
 \section{L'interfaccia grafica}
-In questo paragrafo verranno illustrati i task principali e le relative schermate mostrate dall'applicazione.
+Nella realizzazione dell'interfaccia si sono utilizzati pattern mobile ormai consolidati come: le liste per  i FOI e i POI, i segment controll per la scelta della loro visualizzazione e la title-bar con icona per tornare alla home.\\
+Le gestures non possono essere complicate, infatti come detto nei requisiti la fascia di utenti è molto ampia e alcuni di essi potrebbero avere poca familiarità nell'utilizzo dei dispositivi mobili. Di fatto l'unica gestures presente è il classico "tap" su display touchscreen, scelta che impone un "comportamento a bottone" di tutti gli elementi grafici.\\
+In questo paragrafo verranno quindi illustrati i task principali e le relative schermate mostrate dall'applicazione. \\
 
- \textbf{Dashboard:} è la home del sistema, da qui l'utente può accedere a tutte le sue funzionalità.
+ \textbf{Dashboard:} è la home del sistema, da qui l'utente può accedere a tutte le sue funzionalità. E' costituita da cinque "blocchi logici", il primo include la title-bar (presente in ogni schermata dell'applicazione), il secondo è composto da un  container con le informazioni sul FOI più grave, il terzo include i due bottoni per i task \textit{"how are you?"} e \textit{"signal event"}, il quarto blocco è composto dall'ultima notizia ufficiale comunicata dai soccorrittori e infine il quinto blocco è costituito da tre bottoni per l'accesso ai FOI, POI e alla mappa.
    \begin{figure}[H]
    
 	\centering
-	\includegraphics[scale=0.9]{interfaccia/dash.png}
+	\includegraphics[scale=0.7]{interfaccia/dash.png}
 	\caption{Dashboard}
 	\label{fig:logo_OSM}
 \end{figure}
@@ -227,18 +235,18 @@ In questo paragrafo verranno illustrati i task principali e le relative schermat
 
  
 \begin{figure}
-\textbf{How are you?:} Per aggiornare il proprio stato bisogna cliccare sul bottone giallo, come in Fig \ref{fig:buttoncomestai}, quindi tappare su un elemento della lista. (Fig \ref{fig:lista}). Per rendere effettivo il nostro aggiornamento basterà cliccare sul tasto in alto a destra:\textit{"Public"}.
+\textbf{How are you?:} Per aggiornare il proprio stato bisogna cliccare sul bottone giallo, come in Fig \ref{fig:buttoncomestai}, quindi tappare su un elemento della lista (Fig \ref{fig:lista}). Per rendere effettivo il nostro aggiornamento basterà cliccare sul tasto in alto a destra:\textit{"Publish"}.
 \\ \\ \\
  \begin{minipage}[b]{6cm}
    \centering
-  \includegraphics[scale=0.9]{interfaccia/tapbuttoncomestai.png}
+  \includegraphics[scale=0.6]{interfaccia/tapbuttoncomestai.png}
 	\caption{Tap bottone \textit{"How are you?"}}
 	\label{fig:buttoncomestai}
  \end{minipage}
  \ \hspace{6 mm} \hspace{7 mm} \
  \begin{minipage}[b]{6cm}
   \centering
-\includegraphics[scale=0.9]{interfaccia/comestaitap.png}
+\includegraphics[scale=0.6]{interfaccia/comestaitap.png}
 	\caption{Lista predefinita di stati selezionabili}
 	\label{fig:lista}
  \end{minipage}
@@ -248,17 +256,17 @@ In questo paragrafo verranno illustrati i task principali e le relative schermat
 
 
  \begin{figure}
-  \textbf{Signal event:} Per segnalare un'emergenza bisogna cliccare, nella dashboard, sul bottone rosso come in Fig \ref{fig:buttonsegnala}, come per gli stati possiamo scegliere l'emergenza da segnalare da una lista predefinita( Fig \ref{fig:lista-em}).
+  \textbf{Signal event:} Per segnalare un'emergenza bisogna cliccare, nella dashboard, sul bottone rosso come in Fig \ref{fig:buttonsegnala}. Come per gli stati possiamo scegliere l'emergenza da segnalare da una lista predefinita( Fig \ref{fig:lista-em}).
  \\ \\
  \begin{minipage}[b]{6cm}
    \centering
- \includegraphics[scale=0.9]{interfaccia/tapbuttonsegnala.png}
+ \includegraphics[scale=0.6]{interfaccia/tapbuttonsegnala.png}
 	\caption{Tap del bottone \textit{"Signal event"}}
 	\label{fig:buttonsegnala}
  \end{minipage}
  \ \hspace{6 mm} \hspace{7 mm} \
  \begin{minipage}[b]{6cm}
-\includegraphics[scale=0.9]{interfaccia/segnalatap.png}
+\includegraphics[scale=0.6]{interfaccia/segnalatap.png}
 	\caption{Lista predefinita dell'emergenze}
 	\label{fig:lista-em}
 	
@@ -271,40 +279,41 @@ Quindi premendo sul bottone \textit{"Send signal"}, avremo la possibilità di us
 
 
  \begin{figure}
-\textbf{Where?:} se si decide di utilizzare la mappa per segnalare la posizione, tappando come in Fig \ref{fig:sceltamappa}, allora si dovrà cliccare su un punto della mappa che il sistema ci mostrerà (Fig \ref{fig:mappa-segnala}).
+\textbf{Where?:} se si decide di utilizzare la mappa per segnalare la posizione dell'emergenza, tappando come in Fig \ref{fig:sceltamappa}, allora si dovrà cliccare su un punto della mappa che il sistema ci mostrerà (Fig \ref{fig:mappa-segnala}).
  \\ \\
  \begin{minipage}[b]{6cm}
    \centering
-\includegraphics[scale=0.9]{interfaccia/sceltamap.png}
+\includegraphics[scale=0.6]{interfaccia/sceltamap.png}
 	\caption{Tap \textit{"locate on the map"} }
 	\label{fig:sceltamappa}
  \end{minipage}
  \ \hspace{6 mm} \hspace{7 mm} \
  \begin{minipage}[b]{6cm}
-\includegraphics[scale=0.9]{interfaccia/mappasegnala.png}
+\includegraphics[scale=0.6]{interfaccia/mappasegnala.png}
 	\caption{Mappa mostrata dal sistema }
 	\label{fig:mappa-segnala}
 	
  \end{minipage}
  \\ \\ \\
-Per confermare la posizione scelta, basterà cliccare sul tasto \textit{"Done"} e segnalare così l'emergenza. 
+Per confermare la posizione scelta, basterà infine cliccare sul tasto \textit{"Done"} e segnalare così l'emergenza. 
 \end{figure}
 
 
 
  \begin{figure}
-\textbf{Visualizza FOI:} per visualizzare lo stato dei nostri cari bisogna tappare, nella schermata della dashboard, il bottone in basso a sinistra come in Fig \ref{fig:tapfoi}, ottenendo una lista (Fig \ref{fig:lista-foi}) di essi. Questa sarà ordinata per default in base alla gravità del loro stato.
+\textbf{Visualizza FOI:} per visualizzare lo stato dei nostri cari bisogna tappare, nella schermata della dashboard, il bottone in basso a sinistra come in Fig \ref{fig:tapfoi}. La lista sarà ordinata per default in base alla gravità del loro stato. \\
+ Come possiamo vedere in Fig \ref{fig:lista-foi}, ogni elemento (FOI) è composto da un'icona del suo stato correlata dall'ora e la data in cui egli ha eseguito l'aggiornamento, lo stato del dispositivo ottenuto mediante un "ping" del sistema centrale e infine dalla distanza tra lui e l'utente dell'applicazione.
  \\ \\
  \begin{minipage}[b]{6cm}
    \centering
-	\includegraphics[scale=0.9]{interfaccia/tapfoi.png}
+	\includegraphics[scale=0.6]{interfaccia/tapfoi.png}
 	\caption{Tap da fare per accedere alla lista dei FOI }
 	\label{fig:tapfoi}
  \end{minipage}
  \ \hspace{6 mm} \hspace{7 mm} \
  \begin{minipage}[b]{6cm}
 \centering
-	\includegraphics[scale=0.9]{interfaccia/listafoi.png}
+	\includegraphics[scale=0.6]{interfaccia/listafoi.png}
 	\caption{Lista dei FOI ordinata per default in base alla gravità }
 	\label{fig:lista-foi}
  \end{minipage}
@@ -316,33 +325,32 @@ Per confermare la posizione scelta, basterà cliccare sul tasto \textit{"Done"} 
  \\ \\
  \begin{minipage}[b]{6cm}
    \centering
-\includegraphics[scale=0.9]{interfaccia/comparsa.png}
+\includegraphics[scale=0.6]{interfaccia/comparsa.png}
 	\caption{Tap per aprire il menu a comparsa }
 	\label{fig:comparsa}
  \end{minipage}
  \ \hspace{6 mm} \hspace{7 mm} \
  \begin{minipage}[b]{6cm}
 \centering
-	\includegraphics[scale=0.9]{interfaccia/etichetta.png}
+	\includegraphics[scale=0.6]{interfaccia/etichetta.png}
 	\caption{Tap da fare per ordinare la lista secondo i tre parametri }
 	\label{fig:etichetta}
  \end{minipage}
 \end{figure}
 
  \begin{figure}
- \textbf{Visualizza FOI sulla mappa:} oltre alla lista, è possibile visualizzare i propri FOI sulla mappa. Nella schermata precedente basta cliccare sul bottone \textit{"Map"}, come in Fig \ref{fig:mapfoi}.\\
- La mappa verrà centrata sul primo foi della lista e quindi in base all'ordinamento di essa, nell'esempio di Fig \ref{fig:mappafoi}, la mappa era ordinata per vicinanza.
+ \textbf{Visualizza FOI sulla mappa:} oltre alla lista, è possibile visualizzare i propri FOI sulla mappa. Nella schermata precedente basta cliccare sul bottone \textit{"Map"}, come in Fig \ref{fig:mapfoi}. La mappa verrà quindi centrata sul primo FOI della lista, nell'esempio di Fig \ref{fig:mappafoi} la mappa era stata ordinata per \textit{"vicinanza"}.
  \\ \\
  \begin{minipage}[b]{6cm}
    \centering
-\includegraphics[scale=0.9]{interfaccia/mapfoi.png}
+\includegraphics[scale=0.6]{interfaccia/mapfoi.png}
 	\caption{Tap per visualizzare i FOI sulla mappa }
 	\label{fig:mapfoi}
  \end{minipage}
  \ \hspace{6 mm} \hspace{7 mm} \
  \begin{minipage}[b]{6cm}
 \centering
-	\includegraphics[scale=0.9]{interfaccia/mappafoi.png}
+	\includegraphics[scale=0.6]{interfaccia/mappafoi.png}
 	\caption{Mappa centrata sul FOI più vicino }
 	\label{fig:mappafoi}
  \end{minipage}
@@ -353,56 +361,54 @@ E' possibile comunque, con le stesse modalità della lista, centrare la visuale 
 
 
  \begin{figure}
- \textbf{Clustermarker FOI:} come specificato nei requisiti, i marker dei FOI (e dei POI) devono essere raggruppati quando lo zoom della mappa è tale da farli "toccare" (Fig \ref{fig:markercluster}).\\
-Inoltre cliccando il clustermarker è possibile vedere da quali FOI è composto (Fig \ref{fig:markerfoi}). 
+ \textbf{Clustermarker FOI:} come specificato nei requisiti, i marker dei FOI (e dei POI) devono essere raggruppati quando lo zoom della mappa è tale da farli "toccare" (Fig \ref{fig:markercluster}). Inoltre cliccando il clustermarker è possibile vedere da quali FOI è composto (Fig \ref{fig:markerfoi}). 
  \\ \\
  \begin{minipage}[b]{6cm}
    \centering
-	\includegraphics[scale=0.9]{interfaccia/markercluster.png}
+	\includegraphics[scale=0.6]{interfaccia/markercluster.png}
 	\caption{Due markercluster contenenti rispettivamente due e tre FOI }
 	\label{fig:markercluster}
  \end{minipage}
  \ \hspace{6 mm} \hspace{7 mm} \
  \begin{minipage}[b]{6cm}
 \centering
-\includegraphics[scale=0.9]{interfaccia/markerfoi.png}
+\includegraphics[scale=0.6]{interfaccia/markerfoi.png}
 	\caption{Tap su un markercluster contenente cinque FOI }
 	\label{fig:markerfoi}
  \end{minipage}
 \end{figure}
 
  \begin{figure}
-\textbf{ POI:} le modalità di interazione e le schermate sono analoghe a quelle viste per i FOI. \\
-Dalla dashboard bisogna cliccare sul bottone in fondo, come mostrato in Fig \ref{fig:buttonpoi}, per accedere alla lista (Fig \ref{fig:poilist}).
+\textbf{POI:} le modalità di interazione e le schermate sono analoghe a quelle viste per i FOI. Per accedere alla lista (Fig \ref{fig:poilist}), bisogna cliccare sul bottone in fondo alla dashboard, come mostrato in Fig \ref{fig:buttonpoi}.
  \\ \\
  \begin{minipage}[b]{6cm}
    \centering
-	\includegraphics[scale=0.9]{interfaccia/buttonpoi.png}
+	\includegraphics[scale=0.6]{interfaccia/buttonpoi.png}
 	\caption{Tap da fare per accedere ai propri POI }
 	\label{fig:buttonpoi}
  \end{minipage}
  \ \hspace{6 mm} \hspace{7 mm} \
  \begin{minipage}[b]{6cm}
 \centering
-\includegraphics[scale=0.9]{interfaccia/poilist.png}
+\includegraphics[scale=0.6]{interfaccia/poilist.png}
 	\caption{Lista dei POI ordinata per default in base al più recente }
 	\label{fig:poilist}
  \end{minipage}
 \end{figure}
 
  \begin{figure}
-\textbf{ POI:} le modalità di interazione e le schermate sono analoghe a quelle viste per i FOI. Inoltre tappando su un generico marker, è possibile visualizzare il relativo stato e l'ora in cui è stato aggiornato (Fig \ref{fig:tapmarker}). 
+\textbf{ POI:} Tappando su un marker, indipendetemente che sia un FOI o un POI, è possibile visualizzare le informazioni principali (Fig \ref{fig:tapmarker}). 
  \\ \\
  \begin{minipage}[b]{6cm}
    \centering
-	\includegraphics[scale=0.9]{interfaccia/tapmarker.png}
-	\caption{Tap sul marker del FOI }
+	\includegraphics[scale=0.6]{interfaccia/tapmarker.png}
+	\caption{Tap sul marker di un FOI }
 	\label{fig:tapmarker}
  \end{minipage}
  \ \hspace{6 mm} \hspace{7 mm} \
  \begin{minipage}[b]{6cm}
 \centering
-\includegraphics[scale=0.9]{interfaccia/tappoimarker.png}
+\includegraphics[scale=0.6]{interfaccia/tappoimarker.png}
 	\caption{Tap sul marker di un POI }
 	\label{fig:poilist}
  \end{minipage}

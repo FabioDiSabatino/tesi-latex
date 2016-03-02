@@ -10,18 +10,19 @@
 \BOOKMARK [1][-]{section.2.2}{Perch\350 il mondo ha bisogno di OSM}{chapter.2}% 10
 \BOOKMARK [1][-]{section.2.3}{OpenStreetMap vs Google Maps}{chapter.2}% 11
 \BOOKMARK [0][-]{chapter.3}{L'applicazione lato utente}{}% 12
-\BOOKMARK [1][-]{section.3.1}{Requisiti di sistema}{chapter.3}% 13
-\BOOKMARK [2][-]{subsection.3.1.1}{Requisiti funzionali}{section.3.1}% 14
-\BOOKMARK [2][-]{subsection.3.1.2}{Requisiti non funzionali}{section.3.1}% 15
-\BOOKMARK [1][-]{section.3.2}{L'interfaccia grafica}{chapter.3}% 16
-\BOOKMARK [0][-]{chapter.4}{L'implementazione}{}% 17
-\BOOKMARK [1][-]{section.4.1}{Le applicazioni cross-platform}{chapter.4}% 18
-\BOOKMARK [1][-]{section.4.2}{PhoneGap}{chapter.4}% 19
-\BOOKMARK [1][-]{section.4.3}{Ratchet}{chapter.4}% 20
-\BOOKMARK [1][-]{section.4.4}{Leaflet}{chapter.4}% 21
-\BOOKMARK [1][-]{section.4.5}{La griglia trasparente}{chapter.4}% 22
-\BOOKMARK [2][-]{subsection.4.5.1}{L'algoritmo di Santiago}{section.4.5}% 23
-\BOOKMARK [2][-]{subsection.4.5.2}{Il codice}{section.4.5}% 24
-\BOOKMARK [0][-]{chapter.5}{Conclusioni e prospettive future}{}% 25
-\BOOKMARK [0][-]{chapter*.5}{Ringraziamenti}{}% 26
-\BOOKMARK [0][-]{chapter*.6}{Bibliografia}{}% 27
+\BOOKMARK [1][-]{section.3.1}{I concetti principali}{chapter.3}% 13
+\BOOKMARK [1][-]{section.3.2}{Requisiti di sistema}{chapter.3}% 14
+\BOOKMARK [2][-]{subsection.3.2.1}{Requisiti funzionali}{section.3.2}% 15
+\BOOKMARK [2][-]{subsection.3.2.2}{Requisiti non funzionali}{section.3.2}% 16
+\BOOKMARK [1][-]{section.3.3}{L'interfaccia grafica}{chapter.3}% 17
+\BOOKMARK [0][-]{chapter.4}{L'implementazione}{}% 18
+\BOOKMARK [1][-]{section.4.1}{Le applicazioni cross-platform}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.2}{PhoneGap}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.3}{Ratchet}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.4}{Leaflet}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.5}{La griglia trasparente}{chapter.4}% 23
+\BOOKMARK [2][-]{subsection.4.5.1}{L'algoritmo Santiago}{section.4.5}% 24
+\BOOKMARK [2][-]{subsection.4.5.2}{Il codice}{section.4.5}% 25
+\BOOKMARK [0][-]{chapter.5}{Conclusioni e prospettive future}{}% 26
+\BOOKMARK [0][-]{chapter*.5}{Ringraziamenti}{}% 27
+\BOOKMARK [0][-]{chapter*.6}{Bibliografia}{}% 28
