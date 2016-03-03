@@ -270,3 +270,96 @@ E ora il codice per l'equazione inversa (\ref{equazione}):
 	},
 \end{lstlisting}
 \newpage
+
+\section{La struttura architetturale}
+Come detto l'applicazione deve comunicare con un main-server, quindi l'architettura è quella classica delle applicazioni web, ovvero client-server.	 Tuttavia si è pensato di utilizzare anche il concetto di REST.\\
+REST \cite{REST} definisce un insieme di principi architetturali per la progettazione di un sistema. Rappresenta uno stile architetturale, cioè non si riferisce ad un sistema concreto e ben definito né si tratta di uno standard stabilito da un organismo di standardizzazione. \\ 
+Le risorse sono gli elementi fondamentali su cui si basano i Web Service RESTful, a differenza dei Web Service SOAP-oriented che sono basati sul concetto di chiamata remota. Per risorsa si intende un qualsiasi elemento oggetto di elaborazione. Per fare un parallelo con la programmazione ad oggetti possiamo dire che una risorsa può essere assimilata ad una istanza di una classe.\\
+Il principio che stiamo analizzando stabilisce che ciascuna risorsa deve essere identificata univocamente. Essendo in ambito Web, il meccaniscmo più naturale per individuare una risorsa è dato dal concetto di URI. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{Implementazione/rest.png}
+	\caption{Rappresentazione semplificata dell'architettura }
+	\label{fig:rest}
+\end{figure}
+
+Così facendo, non si deve implementare un metodo del tipo "\textit{getDati(idutente)}", ma basterà eseguire una chiamata HTTP con metodo GET alla risorsa \\
+"\textit{http://www.myapp.com/dati/idutente}". Questo approccio permette quindi di definire un'interfaccia tra il client e il server, rendendo quest'ultimo più scalabile. 
+La realizzazione del server non è argomento di questa tesi, tuttavia è necessario definire la struttura dei dati trasmessi e ricevuti dall'applicazione, in modo tale che in futuro il progettista del server possa implementare il REST service come meglio crede purché rispetti il formato dei dati stabilito. \\
+Di seguito i sequence diagram relativi alla richiesta e la trasmissione di informazioni tra il client e il server, per ognuni pacchetto verrà mostrato il formato stabilito.\\ \\
+ \textbf{Richiesta dei propri FOI e POI:} In questa fase l'applicazione vuole ricevere i dati sui POI e i FOI dell'utente. Il formato della risorsa dipenderà dal successo o meno della richiesta. Il formato ErrorFP è lo stesso autogenerato dall'applicazione in caso di rete collassata o indisponibile.
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.7]{Implementazione/foipois.png}
+	\caption{Rappresentazione semplificata dell'architettura }
+	\label{fig:rest}
+\end{figure}
+\begin{itemize}
+\item \textit{GET http://www.myapp.com/initDati/user}, è l'URI della risorsa contenente le informazioni sui POI e i FOI dell'utente. Il parametro \textit{user} serve per identificare l'utente che sta facendo la richiesta.
+\item \textit{DataFP}, in caso di successo la resource è nel seguente formato:\\
+\begin{lstlisting} [language=JavaScript]
+{
+poi:[
+		{
+			nome: String,
+			foto: String,
+			emergency: String,
+			icon: String,
+			number: Integer,
+			ultimo_ora: String,
+			ultimo_data: String,
+			position: 
+			{
+			     zero:{
+			              lat: Number,
+			              lng: Number
+			              },
+			     cell:{
+			              cell_number_lat: Number,
+			              cell_number_lng: Number
+			            }
+			}
+			
+	  },
+	  .
+	  .
+	  .
+	],
+foi:[
+	  {
+			nome: String,
+			codice: String,
+			stato: String,
+			cod_emergency: Integer,
+			ora_stato: String,
+			data_stato: String,
+			distanza: Number,
+			dispositivo: String,
+			ora_dispositivo: String,
+			position: 
+			{
+			     zero:{
+			              lat: Number,
+			              lng: Number
+			              },
+			     cell:{
+			              cell_number_lat: Number,
+			              cell_number_lng: Number
+			            }
+			}
+	  },
+	  .
+	  .
+	  .
+	]
+}
+\end{lstlisting}
+\item \textit{ErrorFP}, in caso di errore la resource è semplicemente una stringa:\\
+\begin{lstlisting} [language=JavaScript]
+{
+  error: String
+}
+\end{lstlisting}
+\end{itemize}
+
+

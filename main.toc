@@ -25,6 +25,7 @@
 \contentsline {section}{\numberline {4.5}La griglia trasparente}{58}{section.4.5}
 \contentsline {subsection}{\numberline {4.5.1}L'algoritmo Santiago}{59}{subsection.4.5.1}
 \contentsline {subsection}{\numberline {4.5.2}Il codice}{64}{subsection.4.5.2}
-\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{66}{chapter.5}
-\contentsline {chapter}{Ringraziamenti}{67}{chapter*.5}
-\contentsline {chapter}{Bibliografia}{68}{chapter*.6}
+\contentsline {section}{\numberline {4.6}La struttura architetturale}{66}{section.4.6}
+\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{70}{chapter.5}
+\contentsline {chapter}{Ringraziamenti}{71}{chapter*.5}
+\contentsline {chapter}{Bibliografia}{72}{chapter*.6}
