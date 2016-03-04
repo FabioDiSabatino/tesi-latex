@@ -275,7 +275,7 @@ E ora il codice per l'equazione inversa (\ref{equazione}):
 Come detto l'applicazione deve comunicare con un main-server, quindi l'architettura è quella classica delle applicazioni web, ovvero client-server.	 Tuttavia si è pensato di utilizzare anche il concetto di REST.\\
 REST \cite{REST} definisce un insieme di principi architetturali per la progettazione di un sistema. Rappresenta uno stile architetturale, cioè non si riferisce ad un sistema concreto e ben definito né si tratta di uno standard stabilito da un organismo di standardizzazione. \\ 
 Le risorse sono gli elementi fondamentali su cui si basano i Web Service RESTful, a differenza dei Web Service SOAP-oriented che sono basati sul concetto di chiamata remota. Per risorsa si intende un qualsiasi elemento oggetto di elaborazione. Per fare un parallelo con la programmazione ad oggetti possiamo dire che una risorsa può essere assimilata ad una istanza di una classe.\\
-Il principio che stiamo analizzando stabilisce che ciascuna risorsa deve essere identificata univocamente. Essendo in ambito Web, il meccaniscmo più naturale per individuare una risorsa è dato dal concetto di URI. 
+Il principio che stiamo analizzando stabilisce che ciascuna risorsa deve essere identificata univocamente. Essendo in ambito Web, il meccaniscmo più naturale per individuare una risorsa è dato dal concetto di URI. \\
 \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.5]{Implementazione/rest.png}
@@ -287,7 +287,7 @@ Così facendo, non si deve implementare un metodo del tipo "\textit{getDati(idut
 "\textit{http://www.myapp.com/dati/idutente}". Questo approccio permette quindi di definire un'interfaccia tra il client e il server, rendendo quest'ultimo più scalabile. 
 La realizzazione del server non è argomento di questa tesi, tuttavia è necessario definire la struttura dei dati trasmessi e ricevuti dall'applicazione, in modo tale che in futuro il progettista del server possa implementare il REST service come meglio crede purché rispetti il formato dei dati stabilito. \\
 Di seguito i sequence diagram relativi alla richiesta e la trasmissione di informazioni tra il client e il server, per ognuni pacchetto verrà mostrato il formato stabilito.\\ \\
- \textbf{Richiesta dei propri FOI e POI:} In questa fase l'applicazione vuole ricevere i dati sui POI e i FOI dell'utente. Il formato della risorsa dipenderà dal successo o meno della richiesta. Il formato ErrorFP è lo stesso autogenerato dall'applicazione in caso di rete collassata o indisponibile.
+ \textbf{Richiesta dei propri FOI e POI:} In questa fase l'applicazione deve ricevere i dati sui POI e i FOI dell'utente. Il formato della risorsa dipenderà dal successo o meno della richiesta. Il pacchetto ErrorFP è lo stesso generato dall'applicazione in caso di rete assente. \\
  \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.7]{Implementazione/foipois.png}
@@ -362,7 +362,7 @@ foi:[
 \end{lstlisting}
 \end{itemize}
 \newpage
- \textbf{Aggiornamento del proprio stato:} questa fase illustra le azioni legate all'aggiornamente del proprio stato da parte di un'utente (client A). La sequenza è composta da una prima fase, nella quale l'utente chiede al server di modificare la risorsa corrispondente al suo status, è una seconda fase nella quale un altro utente, che ha il client precedente tra i suoi FOI, richiede al server l'aggiornamento dei dati (l'algoritmo legato ai tempi e i modi di aggiornamento dei propri dati non è stato sviluppato, andrebbe fatto tenendo conto del contesto e dello stato della rete).\\
+ \textbf{Aggiornamento del proprio stato:} questa fase illustra le azioni legate all'aggiornamente del proprio stato da parte di un'utente (client A). La sequenza si compone di una prima fase, nella quale l'utente chiede al server di modificare la risorsa corrispondente al suo status, è una seconda fase nella quale un altro utente (client B), che ha tra i suoi FOI il precedente, richiede al server l'aggiornamento dei dati (l'algoritmo legato ai tempi e i modi di aggiornamento dei propri dati non è stato sviluppato, andrebbe fatto tenendo conto del contesto e dello stato della rete).\\
  \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{Implementazione/updateStatus.png}
@@ -370,7 +370,7 @@ foi:[
 	\label{fig:rest}
 \end{figure}
 \begin{itemize}
-\item \textit{PUT http://www.myapp.com/iduser/status}, è l'URI della risorsa contenente le informazioni sull'utente \textit{user}. Questo parametro serve infatti ad identificarlo, mentre lo status è nel seguente formato:\\
+\item \textit{PUT http://www.myapp.com/iduser/status}, è l'URI della risorsa contenente le informazioni sull'utente "\textit{user}". Questo parametro serve infatti ad identificarlo, mentre lo status è nel seguente formato:\\
 \begin{lstlisting} [language=JavaScript]
 {
  stato: String,
@@ -381,6 +381,6 @@ foi:[
 }
 \end{lstlisting}
 Per il successo dell'operazione è sufficiente verificare la response http del server direttamente nell'applicazione.
-\item \textit{GET http://www.myapp.com/iduser/foipoi/status},è l'URI della risorsa contentente tutte le informazioni sui FOI e i POI di un relativo utente (parametro \textit{iduser}).
+\item \textit{GET http://www.myapp.com/iduser/foi/status},è l'URI della risorsa contentente tutte le informazioni dei FOI di un relativo utente (parametro \textit{iduser} per identificare l'utente che richiede la risorsa).
 \item \textit{updateData}, 
 \end{itemize}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.18)  4 MAR 2016 14:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.18)  4 MAR 2016 15:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1419,12 +1419,21 @@ File: Implementazione/rest.png Graphic file (type png)
 Package pdftex.def Info: Implementazione/rest.png used on input line 281.
 (pdftex.def)             Requested size: 391.96342pt x 258.46498pt.
 
+Underfull \hbox (badness 10000) in paragraph at lines 275--284
+
+ []
+
 <Implementazione/foipois.png, id=834, 523.9575pt x 404.51125pt>
 File: Implementazione/foipois.png Graphic file (type png)
 
 <use Implementazione/foipois.png>
 Package pdftex.def Info: Implementazione/foipois.png used on input line 293.
 (pdftex.def)             Requested size: 366.76775pt x 283.15593pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 286--296
+
+ []
+
 
 Underfull \hbox (badness 10000) in paragraph at lines 286--296
 
@@ -1454,13 +1463,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 357--358
 
  []
 
-[69] <Implementazione/updateStatus.png, id=916, 557.08125pt x 367.3725pt>
+[69] <Implementazione/updateStatus.png, id=916, 557.08125pt x 368.37625pt>
 File: Implementazione/updateStatus.png Graphic file (type png)
 
 <use Implementazione/updateStatus.png>
 Package pdftex.def Info: Implementazione/updateStatus.png used on input line 36
 8.
-(pdftex.def)             Requested size: 445.6656pt x 293.89838pt.
+(pdftex.def)             Requested size: 445.6656pt x 294.70139pt.
 
 Overfull \hbox (47.32703pt too wide) in paragraph at lines 368--369
  [][] 
@@ -1630,7 +1639,7 @@ ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on main.pdf (81 pages, 10375516 bytes).
+Output written on main.pdf (81 pages, 10377265 bytes).
 PDF statistics:
  1106 PDF objects out of 1200 (max. 8388607)
  915 compressed objects within 10 object streams
