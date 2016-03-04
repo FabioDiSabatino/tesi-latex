@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.18)  4 MAR 2016 15:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.18)  4 MAR 2016 16:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1423,12 +1423,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 275--284
 
  []
 
-<Implementazione/foipois.png, id=834, 523.9575pt x 404.51125pt>
+<Implementazione/foipois.png, id=834, 485.815pt x 354.32375pt>
 File: Implementazione/foipois.png Graphic file (type png)
 
 <use Implementazione/foipois.png>
 Package pdftex.def Info: Implementazione/foipois.png used on input line 293.
-(pdftex.def)             Requested size: 366.76775pt x 283.15593pt.
+(pdftex.def)             Requested size: 340.06818pt x 248.02492pt.
 
 Underfull \hbox (badness 10000) in paragraph at lines 286--296
 
@@ -1459,29 +1459,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 299--300
  []
 
 [68]
-Underfull \hbox (badness 10000) in paragraph at lines 357--358
+Underfull \hbox (badness 10000) in paragraph at lines 352--353
 
  []
 
-[69] <Implementazione/updateStatus.png, id=916, 557.08125pt x 368.37625pt>
+[69] <Implementazione/updateStatus.png, id=911, 557.08125pt x 368.37625pt>
 File: Implementazione/updateStatus.png Graphic file (type png)
 
 <use Implementazione/updateStatus.png>
 Package pdftex.def Info: Implementazione/updateStatus.png used on input line 36
-8.
+3.
 (pdftex.def)             Requested size: 445.6656pt x 294.70139pt.
 
-Overfull \hbox (47.32703pt too wide) in paragraph at lines 368--369
+Overfull \hbox (47.32703pt too wide) in paragraph at lines 363--364
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 365--371
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
+Underfull \hbox (badness 10000) in paragraph at lines 360--366
 
  []
 
@@ -1490,13 +1485,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 373--374
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.378  ora_stato:
-                  String, <./Implementazione/updateStatus.png>])
-(./conclusioni.tex [71]
+l.374  data_stato:
+                   String, <./Implementazione/updateStatus.png>] [71])
+(./conclusioni.tex [72]
 Capitolo 5.
-) (./ringraziamenti.tex [72
+) (./ringraziamenti.tex [73
 
-]) (./bibliography.tex [73
+]) (./bibliography.tex [74
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 5--7
@@ -1566,7 +1561,7 @@ Underfull \hbox (badness 2846) in paragraph at lines 42--44
 '' []$\OT1/pcr/m/n/12 https : / /
  []
 
-[74
+[75
 
 ]
 Underfull \hbox (badness 3746) in paragraph at lines 46--48
@@ -1606,7 +1601,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--72
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 286.
- [75]
+ [76]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 286.
  (./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 286.
@@ -1620,13 +1615,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 286.
  ) 
 Here is how much of TeX's memory you used:
- 10767 strings out of 493089
- 151357 string characters out of 6134842
+ 10793 strings out of 493089
+ 151768 string characters out of 6134842
  304940 words of memory out of 5000000
- 13623 multiletter control sequences out of 15000+600000
+ 13622 multiletter control sequences out of 15000+600000
  28025 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,12n,43p,1196b,1932s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,12n,43p,1196b,1932s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texl
@@ -1639,10 +1634,10 @@ ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on main.pdf (81 pages, 10377265 bytes).
+Output written on main.pdf (82 pages, 10378581 bytes).
 PDF statistics:
- 1106 PDF objects out of 1200 (max. 8388607)
- 915 compressed objects within 10 object streams
- 371 named destinations out of 1000 (max. 500000)
+ 1142 PDF objects out of 1200 (max. 8388607)
+ 950 compressed objects within 10 object streams
+ 398 named destinations out of 1000 (max. 500000)
  463 words of extra memory for PDF output out of 10000 (max. 10000000)
 

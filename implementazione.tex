@@ -302,9 +302,7 @@ Di seguito i sequence diagram relativi alla richiesta e la trasmissione di infor
 poi:[
 		{
 			nome: String,
-			foto: String,
 			emergency: String,
-			icon: String,
 			number: Integer,
 			ultimo_ora: String,
 			ultimo_data: String,
@@ -328,12 +326,9 @@ poi:[
 foi:[
 	  {
 			nome: String,
-			foto: String,
 			stato: String,
-			cod_emergency: Integer,
 			ora_stato: String,
 			data_stato: String,
-			distanza: Number,
 			dispositivo: String,
 			ora_dispositivo: String,
 			position: 
@@ -370,17 +365,51 @@ foi:[
 	\label{fig:rest}
 \end{figure}
 \begin{itemize}
-\item \textit{PUT http://www.myapp.com/iduser/status}, è l'URI della risorsa contenente le informazioni sull'utente "\textit{user}". Questo parametro serve infatti ad identificarlo, mentre lo status è nel seguente formato:\\
+\item \textit{PUT http://www.myapp.com/iduser/status}, è l'URI della risorsa contenente le informazioni sull'utente "\textit{user}", questo parametro serve ad identificarlo. I dati inviati sono nel seguente formato:
 \begin{lstlisting} [language=JavaScript]
 {
  stato: String,
  cod_emergency: Integer,
  ora_stato: String,
  data_stato: String,
-  
 }
 \end{lstlisting}
 Per il successo dell'operazione è sufficiente verificare la response http del server direttamente nell'applicazione.
 \item \textit{GET http://www.myapp.com/iduser/foi/status},è l'URI della risorsa contentente tutte le informazioni dei FOI di un relativo utente (parametro \textit{iduser} per identificare l'utente che richiede la risorsa).
-\item \textit{updateData}, 
+\item il pacchetto \textit{"updateData"}, contiene tutti e soli i FOI con un nuovo status. Il formato è:
+\begin{lstlisting} [language=JavaScript]
+{
+ foi:[
+	  {
+			nome: String,
+			stato: String,
+			ora_stato: String,
+			data_stato: String,
+			dispositivo: String,
+			ora_dispositivo: String,
+			position: 
+			{
+			     zero:{
+			              lat: Number,
+			              lng: Number
+			              },
+			     cell:{
+			              cell_number_lat: Number,
+			              cell_number_lng: Number
+			            }
+			}
+	  },
+	  .
+	  .
+	  .
+	],
+  
+}
+\end{lstlisting}
+\item nel caso in cui non ci siano aggiornamenti, il server restituisce il pacchetto \textit{"nothing"}:
+\begin{lstlisting} [language=JavaScript]
+{
+  message: nothing
+}
+\end{lstlisting}
 \end{itemize}
