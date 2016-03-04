@@ -291,7 +291,7 @@ Di seguito i sequence diagram relativi alla richiesta e la trasmissione di infor
  \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.7]{Implementazione/foipois.png}
-	\caption{Rappresentazione semplificata dell'architettura }
+	\caption{Rappresentazione della sequenza di azioni per la richiesta dei propri FOI e POI }
 	\label{fig:rest}
 \end{figure}
 \begin{itemize}
@@ -328,7 +328,7 @@ poi:[
 foi:[
 	  {
 			nome: String,
-			codice: String,
+			foto: String,
 			stato: String,
 			cod_emergency: Integer,
 			ora_stato: String,
@@ -361,5 +361,26 @@ foi:[
 }
 \end{lstlisting}
 \end{itemize}
-
-
+\newpage
+ \textbf{Aggiornamento del proprio stato:} questa fase illustra le azioni legate all'aggiornamente del proprio stato da parte di un'utente (client A). La sequenza è composta da una prima fase, nella quale l'utente chiede al server di modificare la risorsa corrispondente al suo status, è una seconda fase nella quale un altro utente, che ha il client precedente tra i suoi FOI, richiede al server l'aggiornamento dei dati (l'algoritmo legato ai tempi e i modi di aggiornamento dei propri dati non è stato sviluppato, andrebbe fatto tenendo conto del contesto e dello stato della rete).\\
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{Implementazione/updateStatus.png}
+	\caption{Rappresentazione semplificata dell'architettura }
+	\label{fig:rest}
+\end{figure}
+\begin{itemize}
+\item \textit{PUT http://www.myapp.com/iduser/status}, è l'URI della risorsa contenente le informazioni sull'utente \textit{user}. Questo parametro serve infatti ad identificarlo, mentre lo status è nel seguente formato:\\
+\begin{lstlisting} [language=JavaScript]
+{
+ stato: String,
+ cod_emergency: Integer,
+ ora_stato: String,
+ data_stato: String,
+  
+}
+\end{lstlisting}
+Per il successo dell'operazione è sufficiente verificare la response http del server direttamente nell'applicazione.
+\item \textit{GET http://www.myapp.com/iduser/foipoi/status},è l'URI della risorsa contentente tutte le informazioni sui FOI e i POI di un relativo utente (parametro \textit{iduser}).
+\item \textit{updateData}, 
+\end{itemize}
