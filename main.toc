@@ -26,6 +26,6 @@
 \contentsline {subsection}{\numberline {4.5.1}L'algoritmo Santiago}{59}{subsection.4.5.1}
 \contentsline {subsection}{\numberline {4.5.2}Il codice}{64}{subsection.4.5.2}
 \contentsline {section}{\numberline {4.6}La struttura architetturale}{66}{section.4.6}
-\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{74}{chapter.5}
-\contentsline {chapter}{Ringraziamenti}{75}{chapter*.5}
-\contentsline {chapter}{Bibliografia}{76}{chapter*.6}
+\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{75}{chapter.5}
+\contentsline {chapter}{Ringraziamenti}{76}{chapter*.5}
+\contentsline {chapter}{Bibliografia}{77}{chapter*.6}

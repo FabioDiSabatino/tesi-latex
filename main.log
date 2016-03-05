@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.18)  5 MAR 2016 09:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.18)  5 MAR 2016 11:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1487,24 +1487,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 360--366
                                                   \fi \fi 
 l.374  data_stato:
                    String, <./Implementazione/updateStatus.png>] [71]
-<Implementazione/signal.png, id=954, 470.75874pt x 163.61125pt>
+<Implementazione/signal.png, id=954, 557.08125pt x 367.3725pt>
 File: Implementazione/signal.png Graphic file (type png)
 
 <use Implementazione/signal.png>
 Package pdftex.def Info: Implementazione/signal.png used on input line 420.
-(pdftex.def)             Requested size: 376.60751pt x 130.88916pt.
+(pdftex.def)             Requested size: 389.95422pt x 257.15898pt.
  [72pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 18}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.436 			     cell:
-                   { <./Implementazione/signal.png>]) (./conclusioni.tex
-[73]
+l.426 \begin{lstlisting} [language=JavaScript]
+                                               <./Implementazione/signal.png>]
+[73]) (./conclusioni.tex [74]
 Capitolo 5.
-) (./ringraziamenti.tex [74
+) (./ringraziamenti.tex [75
 
-]) (./bibliography.tex [75
+]) (./bibliography.tex [76
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 5--7
@@ -1574,7 +1574,7 @@ Underfull \hbox (badness 2846) in paragraph at lines 42--44
 '' []$\OT1/pcr/m/n/12 https : / /
  []
 
-[76
+[77
 
 ]
 Underfull \hbox (badness 3746) in paragraph at lines 46--48
@@ -1614,30 +1614,24 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--72
 
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 286.
- [77]
+ [78]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 286.
  (./main.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 286.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 286.
+Package rerunfilecheck Info: File `main.out' has not changed.
+(rerunfilecheck)             Checksum: 6FBCED511FE207A6E343AA61E10D1C5E;1852.
 
-
-Package rerunfilecheck Warning: File `main.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `main.out':
-(rerunfilecheck)             Before: A5DFDCFFF306A16768E97F3E0E6A2439;1863
-(rerunfilecheck)             After:  6FBCED511FE207A6E343AA61E10D1C5E;1852.
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 286.
  ) 
 Here is how much of TeX's memory you used:
- 10819 strings out of 493089
- 152205 string characters out of 6134842
+ 10853 strings out of 493089
+ 152727 string characters out of 6134842
  305027 words of memory out of 5000000
- 13628 multiletter control sequences out of 15000+600000
+ 13630 multiletter control sequences out of 15000+600000
  28025 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  30i,12n,43p,1196b,1932s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1653,10 +1647,10 @@ ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on main.pdf (83 pages, 10388462 bytes).
+Output written on main.pdf (84 pages, 10398791 bytes).
 PDF statistics:
- 1170 PDF objects out of 1200 (max. 8388607)
- 975 compressed objects within 10 object streams
- 417 named destinations out of 1000 (max. 500000)
+ 1213 PDF objects out of 1440 (max. 8388607)
+ 1016 compressed objects within 11 object streams
+ 449 named destinations out of 1000 (max. 500000)
  468 words of extra memory for PDF output out of 10000 (max. 10000000)
 

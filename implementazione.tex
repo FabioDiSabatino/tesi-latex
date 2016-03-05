@@ -272,7 +272,7 @@ E ora il codice per l'equazione inversa (\ref{equazione}):
 \newpage
 
 \section{La struttura architetturale}
-Come detto l'applicazione deve comunicare con un main-server, quindi l'architettura è quella classica delle applicazioni web client-server, inoltre si è pensato di utilizzare il concetto di REST api.\\
+La struttura architetturale è quella classica delle applicazioni web client-server, tuttavia si è pensato di utilizzare anche il concetto di REST API.\\
 REST \cite{REST} definisce un insieme di principi architetturali per la progettazione di un sistema. Rappresenta uno stile architetturale, cioè non si riferisce ad un sistema concreto e ben definito né si tratta di uno standard stabilito da un organismo di standardizzazione. \\ 
 Le risorse sono gli elementi fondamentali su cui si basano i Web Service RESTful, a differenza dei Web Service SOAP-oriented che sono basati sul concetto di chiamata remota. Per risorsa si intende un qualsiasi elemento oggetto di elaborazione. Per fare un parallelo con la programmazione ad oggetti possiamo dire che una risorsa può essere assimilata ad una istanza di una classe.\\
 Il principio che stiamo analizzando stabilisce che ciascuna risorsa deve essere identificata univocamente. Essendo in ambito Web, il meccaniscmo più naturale per individuare una risorsa è dato dal concetto di URI. \\
@@ -284,10 +284,10 @@ Il principio che stiamo analizzando stabilisce che ciascuna risorsa deve essere 
 \end{figure}
 
 Così facendo, non si deve implementare un metodo del tipo "\textit{getDati(idutente)}", ma basterà eseguire una chiamata HTTP con metodo GET alla risorsa \\
-"\textit{http://www.myapp.com/dati/idutente}". Questo approccio permette quindi di definire un'interfaccia tra il client e il server, rendendo quest'ultimo più scalabile. 
+"\textit{http://www.myapp.com/dati/idutente}". Questo approccio permette quindi di definire un'interfaccia tra il client e il server, rendendo quest'ultimo più scalabile. \\
 La realizzazione del server non è il lavoro di questa tesi, tuttavia è necessario definire la struttura dei dati trasmessi e ricevuti dall'applicazione, in questo modo, in futuro, il progettista del server potrà implementare il REST service come meglio crede purché rispetti il formato dei dati stabilito. \\
 Di seguito i sequence diagram relativi ai task di aggiornamento dello status, richiesta dei dati iniziali e segnalazione di un evento; per ognuno di essi verrà mostrato il formato dei pacchetti scambiati.\\\\
- \textbf{Richiesta dei propri FOI e POI:} In questa fase l'applicazione deve ricevere i dati sui POI e i FOI dell'utente. Il formato della risorsa dipenderà dal successo o meno della richiesta. Il pacchetto ErrorFP è lo stesso generato dall'applicazione in caso di rete assente. \\
+ \textbf{Richiesta dei propri FOI e POI:} in questa fase l'applicazione deve ricevere per la prima volta i dati sui POI e i FOI dell'utente. Il formato della risorsa dipenderà dal successo o meno della richiesta. Il pacchetto ErrorFP è lo stesso generato dall'applicazione in caso di rete assente. \\
  \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.7]{Implementazione/foipois.png}
@@ -357,7 +357,7 @@ foi:[
 \end{lstlisting}
 \end{itemize}
 \newpage
- \textbf{Aggiornamento status:} di seguito si illustrano le azioni legate all'aggiornamento dello status di un'utente (client A). La sequenza si compone di una prima fase, nella quale l'utente chiede al server di modificare la risorsa corrispondente al suo status, è una seconda fase nella quale un altro utente (client B), che ha tra i suoi FOI il precedente, richiede al server l'aggiornamento dei dati (l'algoritmo legato ai tempi e i modi di aggiornamento dei propri dati non è stato sviluppato, andrebbe fatto tenendo conto del contesto e dello stato della rete).\\
+ \textbf{Aggiornamento status:} in questa sequenza si illustrano le azioni legate all'aggiornamento dello status di un utente (client A).  Nella fase iniziale, il \textit{"client A"} chiede al server di modificare la risorsa corrispondente al suo status, successivamente un altro utente (\textit{"client B"}), che ha tra i suoi FOI il precedente, richiede al server l'aggiornamento dei dati (l'algoritmo legato ai tempi e i modi di aggiornamento dei dati non è stato sviluppato, andrebbe fatto tenendo conto del contesto e dello stato della rete).\\
  \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{Implementazione/updateStatus.png}
@@ -365,7 +365,7 @@ foi:[
 	\label{fig:rest}
 \end{figure}
 \begin{itemize}
-\item \textit{PUT http://www.myapp.com/iduser/status}, è l'URI della risorsa contenente le informazioni sull'utente "\textit{user}", questo parametro serve ad identificarlo. I dati inviati sono nel seguente formato:
+\item \textit{PUT http://www.myapp.com/iduser/status}, è l'URI della risorsa contenente le informazioni dell'utente identificato da "\textit{iduser}". I dati inviati sono nel seguente formato:
 \begin{lstlisting} [language=JavaScript]
 {
  stato: String,
@@ -374,9 +374,9 @@ foi:[
  data_stato: String,
 }
 \end{lstlisting}
-Per il successo dell'operazione è sufficiente verificare la response http del server direttamente nell'applicazione.
-\item \textit{GET http://www.myapp.com/iduser/foi/status},è l'URI della risorsa contentente tutte le informazioni dei FOI di un relativo utente (parametro \textit{iduser} per identificare l'utente che richiede la risorsa).
-\item il pacchetto \textit{"updateData"}, contiene tutti e soli i FOI con un nuovo status. Il formato è:
+Per il successo dell'operazione è sufficiente verificare il codice di stato del pacchetto HTTP ricevuto.
+\item \textit{GET http://www.myapp.com/iduser/foi},è l'URI della risorsa contentente tutte le informazioni dei FOI di un relativo utente (\textit{iduser} per identificare l'utente che richiede la risorsa).
+\item il pacchetto \textit{"updateFOI"}, contiene tutti e soli i FOI con un nuovo status. Il formato è:
 \begin{lstlisting} [language=JavaScript]
 {
  foi:[
@@ -414,14 +414,15 @@ Per il successo dell'operazione è sufficiente verificare la response http del s
 \end{lstlisting}
 \end{itemize}
 
-\textbf{Segnalazione evento:} in questa fase, l'utente ha completato la procedura standard per segnalare un'emergenza. 
+\textbf{Segnalazione evento:} in questa sequenza si illustrano le azioni legate alla segnalazione di un'emergenza. Nella prima fase un utente, dopo aver completato la procedura standard, segnala un'emergenza in un certo punto dell'area colpita. Successivamente un altro utente (client B) richiede l'aggiornamento dei dati relativi ai suoi POI.
  \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.8]{Implementazione/signal.png}
+	\includegraphics[scale=0.7]{Implementazione/signal.png}
 	\caption{Sequenza di azioni per la segnalazione di eventi }
 	\label{fig:sig}
 \end{figure}
- \textit{PUT http://www.myapp.com/signals/events}, è l'URI della risorsa contenente le segnalazioni degli utenti. Il formato dei dati trasmessi è il seguente:
+\begin{itemize}
+\item  \textit{PUT http://www.myapp.com/signals/system/events}, è l'URI della risorsa contenente le segnalazioni degli utenti di un certo sistema. Il formato dei dati trasmessi è il seguente:
 \begin{lstlisting} [language=JavaScript]
 {
   emergency: String,
@@ -440,4 +441,41 @@ Per il successo dell'operazione è sufficiente verificare la response http del s
 			}
 }
 \end{lstlisting}
-Per la conferma dell'avvenuta segnalazione, si controlla il pacchetto di response del protocollo HTTP. 
+Per il successo dell'operazione è sufficiente verificare il codice di stato del pacchetto HTTP ricevuto.
+\item \textit{GET http://www.myapp.com/iduser/poi},è l'URI della risorsa contentente tutte le informazioni dei POI di un relativo utente (\textit{iduser} per identificare l'utente che richiede la risorsa).
+\item il pacchetto \textit{"updatePOI"}, contiene tutti e soli i POI con nuove informazioni. Il formato è:
+\begin{lstlisting} [language=JavaScript]
+{
+ poi:[
+	  {
+			nome: String,
+		    emergency: String,
+			number_signal: Integer,
+			ora_ultimo: String,
+			data_ultimo: String,
+			position: 
+			{
+			     zero:{
+			              lat: Number,
+			              lng: Number
+			              },
+			     cell:{
+			              cell_number_lat: Number,
+			              cell_number_lng: Number
+			            }
+			}
+	  },
+	  .
+	  .
+	  .
+	],
+  
+}
+\end{lstlisting}
+\item nel caso in cui non ci siano aggiornamenti, il server restituisce il pacchetto \textit{"nothing"}:
+\begin{lstlisting} [language=JavaScript]
+{
+  message: String
+}
+\end{lstlisting}
+\end{itemize}
