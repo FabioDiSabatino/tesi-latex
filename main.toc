@@ -12,7 +12,7 @@
 \contentsline {section}{\numberline {2.2}Perch\IeC {\`e} il mondo ha bisogno di OSM}{21}{section.2.2}
 \contentsline {section}{\numberline {2.3}OpenStreetMap vs Google Maps}{23}{section.2.3}
 \contentsline {chapter}{\numberline {3}L'applicazione lato utente}{28}{chapter.3}
-\contentsline {section}{\numberline {3.1}I concetti principali}{28}{section.3.1}
+\contentsline {section}{\numberline {3.1}Il concept}{28}{section.3.1}
 \contentsline {section}{\numberline {3.2}Requisiti di sistema}{29}{section.3.2}
 \contentsline {subsection}{\numberline {3.2.1}Requisiti funzionali}{29}{subsection.3.2.1}
 \contentsline {subsection}{\numberline {3.2.2}Requisiti non funzionali}{33}{subsection.3.2.2}
@@ -26,6 +26,6 @@
 \contentsline {subsection}{\numberline {4.5.1}L'algoritmo Santiago}{59}{subsection.4.5.1}
 \contentsline {subsection}{\numberline {4.5.2}Il codice}{64}{subsection.4.5.2}
 \contentsline {section}{\numberline {4.6}La struttura architetturale}{66}{section.4.6}
-\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{73}{chapter.5}
-\contentsline {chapter}{Ringraziamenti}{74}{chapter*.5}
-\contentsline {chapter}{Bibliografia}{75}{chapter*.6}
+\contentsline {chapter}{\numberline {5}Conclusioni e prospettive future}{74}{chapter.5}
+\contentsline {chapter}{Ringraziamenti}{75}{chapter*.5}
+\contentsline {chapter}{Bibliografia}{76}{chapter*.6}

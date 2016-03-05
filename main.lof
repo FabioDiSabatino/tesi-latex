@@ -46,6 +46,7 @@
 \contentsline {figure}{\numberline {4.13}{\ignorespaces Proiezione delle distanze utilizzate per il calcolo della cella}}{62}{figure.4.13}
 \contentsline {figure}{\numberline {4.14}{\ignorespaces Posizione ottenuta riconvertendo la tupla di dati vista nel passo \ref {tupla} dell'algoritmo }}{63}{figure.4.14}
 \contentsline {figure}{\numberline {4.15}{\ignorespaces Rappresentazione semplificata dell'architettura }}{66}{figure.4.15}
-\contentsline {figure}{\numberline {4.16}{\ignorespaces Rappresentazione della sequenza di azioni per la richiesta dei propri FOI e POI }}{67}{figure.4.16}
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Rappresentazione semplificata dell'architettura }}{70}{figure.4.17}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Sequenza di azioni per la ricezione dei dati iniziali contenenti i FOI e i POI}}{67}{figure.4.16}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Sequenza di azioni per l'aggiornamento del proprio status }}{70}{figure.4.17}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Sequenza di azioni per la segnalazione di eventi }}{72}{figure.4.18}
 \addvspace {10\p@ }

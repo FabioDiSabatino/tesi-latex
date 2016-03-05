@@ -1,6 +1,6 @@
 \chapter{L'applicazione lato utente}
 Nella prima parte di questo capitolo, vengono illustrati i requisiti di sistema che hanno guidato lo sviluppo dell'intera applicazione. Mentre nella parte finale verranno mostrati i task principali e le relative schermate dell'interfaccia realizzata con il framework Ratchet (vedi \ref{ratchet}).
-\section{I concetti principali}
+\section{Il concept}
 La progettazione dell'applicazione è stata guidata, oltre allo studio di numerosi documenti riguardanti il contesto d'uso, dalla definizione di alcuni concetti chiave. \\
 Nel contesto d'uso, le persone sono interessate a conoscere lo stato dei propri cari e di alcuni luoghi d'interesse. Questa osservazione è stata implementata nei concetti di Friends Of Interest e Point Of Interest; i FOI e i POI rappresentano quindi l'insieme delle persone e dei luoghi per i quali l'utente ritiene rilevante conoscere lo stato in uno scenario di disatro ambientale e/o umano.\\
 Un'altra questione importante è l'attendibilità delle informazioni mostrate; per questo motivo ogni stato, che sia un FOI o un POI, è correllato dalla data e l'ora in cui è stato "prodotto". Per i POI l'attendibilità è rafforzata dal numero di segnalazioni di tale emergenza; infatti dato che chiunque, tramite una procedura standard, potrebbe segnalare un'emergenza in quello specifico luogo ha senso considerarlo come un buon indice di attendibilità dell'informazione, senza trascurare però quei luoghi (come le case indipendenti) che avranno un numero relativamente più basso di segnalazioni.\\

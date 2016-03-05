@@ -272,7 +272,7 @@ E ora il codice per l'equazione inversa (\ref{equazione}):
 \newpage
 
 \section{La struttura architetturale}
-Come detto l'applicazione deve comunicare con un main-server, quindi l'architettura è quella classica delle applicazioni web, ovvero client-server.	 Tuttavia si è pensato di utilizzare anche il concetto di REST.\\
+Come detto l'applicazione deve comunicare con un main-server, quindi l'architettura è quella classica delle applicazioni web client-server, inoltre si è pensato di utilizzare il concetto di REST api.\\
 REST \cite{REST} definisce un insieme di principi architetturali per la progettazione di un sistema. Rappresenta uno stile architetturale, cioè non si riferisce ad un sistema concreto e ben definito né si tratta di uno standard stabilito da un organismo di standardizzazione. \\ 
 Le risorse sono gli elementi fondamentali su cui si basano i Web Service RESTful, a differenza dei Web Service SOAP-oriented che sono basati sul concetto di chiamata remota. Per risorsa si intende un qualsiasi elemento oggetto di elaborazione. Per fare un parallelo con la programmazione ad oggetti possiamo dire che una risorsa può essere assimilata ad una istanza di una classe.\\
 Il principio che stiamo analizzando stabilisce che ciascuna risorsa deve essere identificata univocamente. Essendo in ambito Web, il meccaniscmo più naturale per individuare una risorsa è dato dal concetto di URI. \\
@@ -285,13 +285,13 @@ Il principio che stiamo analizzando stabilisce che ciascuna risorsa deve essere 
 
 Così facendo, non si deve implementare un metodo del tipo "\textit{getDati(idutente)}", ma basterà eseguire una chiamata HTTP con metodo GET alla risorsa \\
 "\textit{http://www.myapp.com/dati/idutente}". Questo approccio permette quindi di definire un'interfaccia tra il client e il server, rendendo quest'ultimo più scalabile. 
-La realizzazione del server non è argomento di questa tesi, tuttavia è necessario definire la struttura dei dati trasmessi e ricevuti dall'applicazione, in modo tale che in futuro il progettista del server possa implementare il REST service come meglio crede purché rispetti il formato dei dati stabilito. \\
-Di seguito i sequence diagram relativi alla richiesta e la trasmissione di informazioni tra il client e il server, per ognuni pacchetto verrà mostrato il formato stabilito.\\ \\
+La realizzazione del server non è il lavoro di questa tesi, tuttavia è necessario definire la struttura dei dati trasmessi e ricevuti dall'applicazione, in questo modo, in futuro, il progettista del server potrà implementare il REST service come meglio crede purché rispetti il formato dei dati stabilito. \\
+Di seguito i sequence diagram relativi ai task di aggiornamento dello status, richiesta dei dati iniziali e segnalazione di un evento; per ognuno di essi verrà mostrato il formato dei pacchetti scambiati.\\\\
  \textbf{Richiesta dei propri FOI e POI:} In questa fase l'applicazione deve ricevere i dati sui POI e i FOI dell'utente. Il formato della risorsa dipenderà dal successo o meno della richiesta. Il pacchetto ErrorFP è lo stesso generato dall'applicazione in caso di rete assente. \\
  \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.7]{Implementazione/foipois.png}
-	\caption{Rappresentazione della sequenza di azioni per la richiesta dei propri FOI e POI }
+	\caption{Sequenza di azioni per la ricezione dei dati iniziali contenenti i FOI e i POI}
 	\label{fig:rest}
 \end{figure}
 \begin{itemize}
@@ -303,7 +303,7 @@ poi:[
 		{
 			nome: String,
 			emergency: String,
-			number: Integer,
+			number_signal: Integer,
 			ultimo_ora: String,
 			ultimo_data: String,
 			position: 
@@ -361,7 +361,7 @@ foi:[
  \begin{figure}[H]
 	\centering
 	\includegraphics[scale=0.8]{Implementazione/updateStatus.png}
-	\caption{Rappresentazione semplificata dell'architettura }
+	\caption{Sequenza di azioni per l'aggiornamento del proprio status }
 	\label{fig:rest}
 \end{figure}
 \begin{itemize}
@@ -409,7 +409,35 @@ Per il successo dell'operazione è sufficiente verificare la response http del s
 \item nel caso in cui non ci siano aggiornamenti, il server restituisce il pacchetto \textit{"nothing"}:
 \begin{lstlisting} [language=JavaScript]
 {
-  message: nothing
+  message: String
 }
 \end{lstlisting}
 \end{itemize}
+
+\textbf{Segnalazione evento:} in questa fase, l'utente ha completato la procedura standard per segnalare un'emergenza. 
+ \begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.8]{Implementazione/signal.png}
+	\caption{Sequenza di azioni per la segnalazione di eventi }
+	\label{fig:sig}
+\end{figure}
+ \textit{PUT http://www.myapp.com/signals/events}, è l'URI della risorsa contenente le segnalazioni degli utenti. Il formato dei dati trasmessi è il seguente:
+\begin{lstlisting} [language=JavaScript]
+{
+  emergency: String,
+  data: String,
+  ora: String,
+  position: 
+			{
+			     zero:{
+			              lat: Number,
+			              lng: Number
+			              },
+			     cell:{
+			              cell_number_lat: Number,
+			              cell_number_lng: Number
+			            }
+			}
+}
+\end{lstlisting}
+Per la conferma dell'avvenuta segnalazione, si controlla il pacchetto di response del protocollo HTTP. 
