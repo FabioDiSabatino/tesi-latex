@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.18)  5 MAR 2016 11:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2016.1.18)  8 MAR 2016 10:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -397,21 +397,21 @@ LaTeX Warning: Label `fig:rest' multiply defined.
 )
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 231.
-LaTeX Font Info:    ... okay on input line 231.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 231.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 230.
+LaTeX Font Info:    ... okay on input line 230.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 230.
 
  (/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
@@ -444,7 +444,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring OFF on input line 231.
+Package hyperref Info: Link coloring OFF on input line 230.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -454,16 +454,16 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count136
 )
-LaTeX Info: Redefining \ref on input line 231.
-LaTeX Info: Redefining \pageref on input line 231.
-LaTeX Info: Redefining \nameref on input line 231.
+LaTeX Info: Redefining \ref on input line 230.
+LaTeX Info: Redefining \pageref on input line 230.
+LaTeX Info: Redefining \nameref on input line 230.
 
 (./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
-LaTeX Info: Redefining \it@ocap on input line 231.
-LaTeX Info: Redefining \it@ccap on input line 231.
+LaTeX Info: Redefining \it@ocap on input line 230.
+LaTeX Info: Redefining \it@ccap on input line 230.
 
 
 File italian.ldf warning: 
@@ -471,7 +471,7 @@ italian.ldf    With OT1 encoding guillemets are poorly faked
 italian.ldf    Use T1 encoding
 italian.ldf    or specify a font with command \CaporaliFrom
 italian.ldf    See the documentation concerning the babel-italian typesetting 
-italian.ldf    on input line 231.
+italian.ldf    on input line 230.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
@@ -517,10 +517,10 @@ logo_univ.png (PNG copy)> <./FIGS/logo_ing.png>]) (./dedica.tex)pdfTeX warning
 ed, duplicate ignored
 <to be read again> 
                    \relax 
-l.244 \newpage
+l.243 \newpage
                [1]
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 250.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 249.
  (./main.toc [1
 
 ])
@@ -533,28 +533,23 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <24.88> not available
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
- [4] (./sommario.tex)
-Underfull \hbox (badness 10000) in paragraph at lines 6--263
+ [4] (./sommario.tex
+Underfull \hbox (badness 10000) in paragraph at lines 6--11
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--263
+Underfull \hbox (badness 10000) in paragraph at lines 6--11
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 6--263
+Underfull \hbox (badness 10000) in paragraph at lines 12--22
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 6--263
-
- []
-
-(./introduzione.texpdfTeX warning (ext4): destination with the same identifier 
-(name{page.1}) has been already used, duplicate ignored
+) (./introduzione.texpdfTeX warning (ext4): destination with the same identifie
+r (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
 l.1 \chapter
@@ -1304,43 +1299,43 @@ File: Implementazione/leaflet_result.png Graphic file (type png)
 
 <use Implementazione/leaflet_result.png>
 Package pdftex.def Info: Implementazione/leaflet_result.png used on input line 
-147.
+146.
 (pdftex.def)             Requested size: 363.75256pt x 130.0837pt.
  [56pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 8}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.151 L
+l.150 L
        e coordinate sono implementate attraverso l'oggetto latLng, ed è pos...
  <./Implementazione/leaflet.png>] [57pdfTeX warning (ext4): destination with th
 e same identifier (name{figure.4.9}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.164 \newpage
+l.163 \newpage
                <./Implementazione/leaflet_result.png>] [58]
-<Implementazione/sis1.png, id=754, 633.36626pt x 443.6575pt>
+<Implementazione/sis1.png, id=753, 633.36626pt x 443.6575pt>
 File: Implementazione/sis1.png Graphic file (type png)
 
 <use Implementazione/sis1.png>
-Package pdftex.def Info: Implementazione/sis1.png used on input line 180.
+Package pdftex.def Info: Implementazione/sis1.png used on input line 179.
 (pdftex.def)             Requested size: 380.02269pt x 266.19655pt.
  [59pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 10}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.184 \newpage
+l.183 \newpage
                <./Implementazione/sis1.png>]
-<Implementazione/mapping.png, id=762, 688.5725pt x 391.4625pt>
+<Implementazione/mapping.png, id=761, 688.5725pt x 391.4625pt>
 File: Implementazione/mapping.png Graphic file (type png)
 
 <use Implementazione/mapping.png>
-Package pdftex.def Info: Implementazione/mapping.png used on input line 189.
+Package pdftex.def Info: Implementazione/mapping.png used on input line 188.
 (pdftex.def)             Requested size: 413.14668pt x 234.8793pt.
 
-Overfull \hbox (14.8081pt too wide) in paragraph at lines 189--190
+Overfull \hbox (14.8081pt too wide) in paragraph at lines 188--189
  [][] 
  []
 
@@ -1349,21 +1344,21 @@ Overfull \hbox (14.8081pt too wide) in paragraph at lines 189--190
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.195 \newpage
+l.194 \newpage
                <./Implementazione/mapping.png>]
-<Implementazione/celle.png, id=769, 689.57625pt x 373.395pt>
+<Implementazione/celle.png, id=768, 689.57625pt x 373.395pt>
 File: Implementazione/celle.png Graphic file (type png)
 
 <use Implementazione/celle.png>
-Package pdftex.def Info: Implementazione/celle.png used on input line 199.
+Package pdftex.def Info: Implementazione/celle.png used on input line 198.
 (pdftex.def)             Requested size: 413.74893pt x 224.03873pt.
 
-Overfull \hbox (15.41035pt too wide) in paragraph at lines 199--200
+Overfull \hbox (15.41035pt too wide) in paragraph at lines 198--199
  [][] 
  []
 
 
-Overfull \hbox (23.91353pt too wide) in paragraph at lines 207--208
+Overfull \hbox (23.91353pt too wide) in paragraph at lines 206--207
 []\OT1/ptm/m/n/12 Coppia di in-te-ri in-di-can-te il nu-me-ro di cel-la al-l'in
 -ter-no del si-ste-ma $\OT1/cmr/m/n/12 [\OML/cmm/m/it/12 lat[]\OT1/cmr/m/n/12 ;
  \OML/cmm/m/it/12 lng[]\OT1/cmr/m/n/12 ]$ 
@@ -1374,16 +1369,16 @@ Overfull \hbox (23.91353pt too wide) in paragraph at lines 207--208
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.209 \newpage
+l.208 \newpage
                <./Implementazione/celle.png>]
-<Implementazione/dist.png, id=778, 688.5725pt x 368.37625pt>
+<Implementazione/dist.png, id=777, 688.5725pt x 368.37625pt>
 File: Implementazione/dist.png Graphic file (type png)
 
 <use Implementazione/dist.png>
-Package pdftex.def Info: Implementazione/dist.png used on input line 213.
+Package pdftex.def Info: Implementazione/dist.png used on input line 212.
 (pdftex.def)             Requested size: 413.14668pt x 221.02744pt.
 
-Overfull \hbox (14.8081pt too wide) in paragraph at lines 213--214
+Overfull \hbox (14.8081pt too wide) in paragraph at lines 212--213
  [][] 
  []
 
@@ -1392,16 +1387,16 @@ Overfull \hbox (14.8081pt too wide) in paragraph at lines 213--214
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.219 \newpage
+l.218 \newpage
                <./Implementazione/dist.png>]
-<Implementazione/final.png, id=785, 688.5725pt x 368.37625pt>
+<Implementazione/final.png, id=784, 688.5725pt x 368.37625pt>
 File: Implementazione/final.png Graphic file (type png)
 
 <use Implementazione/final.png>
-Package pdftex.def Info: Implementazione/final.png used on input line 229.
+Package pdftex.def Info: Implementazione/final.png used on input line 228.
 (pdftex.def)             Requested size: 413.14668pt x 221.02744pt.
 
-Overfull \hbox (14.8081pt too wide) in paragraph at lines 229--230
+Overfull \hbox (14.8081pt too wide) in paragraph at lines 228--229
  [][] 
  []
 
@@ -1410,32 +1405,32 @@ Overfull \hbox (14.8081pt too wide) in paragraph at lines 229--230
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.233 \newpage
+l.232 \newpage
                <./Implementazione/final.png>] [64] [65]
-<Implementazione/rest.png, id=835, 783.92876pt x 516.93124pt>
+<Implementazione/rest.png, id=834, 783.92876pt x 516.93124pt>
 File: Implementazione/rest.png Graphic file (type png)
 
 <use Implementazione/rest.png>
-Package pdftex.def Info: Implementazione/rest.png used on input line 281.
+Package pdftex.def Info: Implementazione/rest.png used on input line 280.
 (pdftex.def)             Requested size: 391.96342pt x 258.46498pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 275--284
+Underfull \hbox (badness 10000) in paragraph at lines 274--283
 
  []
 
-<Implementazione/foipois.png, id=836, 485.815pt x 354.32375pt>
+<Implementazione/foipois.png, id=835, 485.815pt x 354.32375pt>
 File: Implementazione/foipois.png Graphic file (type png)
 
 <use Implementazione/foipois.png>
-Package pdftex.def Info: Implementazione/foipois.png used on input line 293.
+Package pdftex.def Info: Implementazione/foipois.png used on input line 292.
 (pdftex.def)             Requested size: 340.06818pt x 248.02492pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--296
+Underfull \hbox (badness 10000) in paragraph at lines 285--295
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 286--296
+Underfull \hbox (badness 10000) in paragraph at lines 285--295
 
  []
 
@@ -1444,39 +1439,39 @@ Underfull \hbox (badness 10000) in paragraph at lines 286--296
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.296 \end{figure}
+l.295 \end{figure}
                    <./Implementazione/rest.png>] [67pdfTeX warning (ext4): dest
 ination with the same identifier (name{figure.4.16}) has been already used, dup
 licate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.299 \item \textit
+l.298 \item \textit
                    {DataFP}, in caso di successo la resource è nel seguente...
  <./Implementazione/foipois.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 299--300
+Underfull \hbox (badness 10000) in paragraph at lines 298--299
 
  []
 
 [68]
-Underfull \hbox (badness 10000) in paragraph at lines 352--353
+Underfull \hbox (badness 10000) in paragraph at lines 351--352
 
  []
 
-[69] <Implementazione/updateStatus.png, id=913, 557.08125pt x 368.37625pt>
+[69] <Implementazione/updateStatus.png, id=912, 557.08125pt x 368.37625pt>
 File: Implementazione/updateStatus.png Graphic file (type png)
 
 <use Implementazione/updateStatus.png>
 Package pdftex.def Info: Implementazione/updateStatus.png used on input line 36
-3.
+2.
 (pdftex.def)             Requested size: 445.6656pt x 294.70139pt.
 
-Overfull \hbox (47.32703pt too wide) in paragraph at lines 363--364
+Overfull \hbox (47.32703pt too wide) in paragraph at lines 362--363
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--366
+Underfull \hbox (badness 10000) in paragraph at lines 359--365
 
  []
 
@@ -1485,26 +1480,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 360--366
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.374  data_stato:
+l.373  data_stato:
                    String, <./Implementazione/updateStatus.png>] [71]
-<Implementazione/signal.png, id=954, 557.08125pt x 367.3725pt>
+<Implementazione/signal.png, id=953, 557.08125pt x 367.3725pt>
 File: Implementazione/signal.png Graphic file (type png)
 
 <use Implementazione/signal.png>
-Package pdftex.def Info: Implementazione/signal.png used on input line 420.
+Package pdftex.def Info: Implementazione/signal.png used on input line 419.
 (pdftex.def)             Requested size: 389.95422pt x 257.15898pt.
  [72pdfTeX warning (ext4): destination with the same identifier (name{figure.4.
 18}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.426 \begin{lstlisting} [language=JavaScript]
+l.425 \begin{lstlisting} [language=JavaScript]
                                                <./Implementazione/signal.png>]
 [73]) (./conclusioni.tex [74]
 Capitolo 5.
-) (./ringraziamenti.tex [75
+[75
 
-]) (./bibliography.tex [76
+]) (./ringraziamenti.tex [76]) (./bibliography.tex [77
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 5--7
@@ -1574,7 +1569,7 @@ Underfull \hbox (badness 2846) in paragraph at lines 42--44
 '' []$\OT1/pcr/m/n/12 https : / /
  []
 
-[77
+[78
 
 ]
 Underfull \hbox (badness 3746) in paragraph at lines 46--48
@@ -1613,28 +1608,28 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--72
  []
 
 )
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 286.
- [78]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 286.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 285.
+ [79]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 285.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 286.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 286.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 285.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 285.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 6FBCED511FE207A6E343AA61E10D1C5E;1852.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 286.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 285.
  ) 
 Here is how much of TeX's memory you used:
- 10853 strings out of 493089
- 152727 string characters out of 6134842
- 305027 words of memory out of 5000000
- 13630 multiletter control sequences out of 15000+600000
+ 10864 strings out of 493089
+ 152846 string characters out of 6134842
+ 305011 words of memory out of 5000000
+ 13641 multiletter control sequences out of 15000+600000
  28025 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,12n,43p,1196b,1932s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,12n,43p,1196b,1931s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
 exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/te
 xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texl
@@ -1647,10 +1642,10 @@ ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2015/texmf-dist/font
 s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/ur
 w/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/ut
 mri8a.pfb>
-Output written on main.pdf (84 pages, 10398791 bytes).
+Output written on main.pdf (85 pages, 10401416 bytes).
 PDF statistics:
- 1213 PDF objects out of 1440 (max. 8388607)
- 1016 compressed objects within 11 object streams
+ 1219 PDF objects out of 1440 (max. 8388607)
+ 1021 compressed objects within 11 object streams
  449 named destinations out of 1000 (max. 500000)
  468 words of extra memory for PDF output out of 10000 (max. 10000000)
 

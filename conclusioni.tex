@@ -1,1 +1,12 @@
 \chapter{Conclusioni e prospettive future}
+
+Come già detto, l'obiettivo di questa tesi è lo sviluppo di un'applicazione mobile cross-platform geolocalizzata per contesti di disaster-management. Pur avendo realizzato l'interfaccia e le principali funzioni del sistema, il lavoro non può considerarsi terminato. \\
+In particolare non si è avuto il tempo di affrontare le seguenti questioni:
+\begin{itemize}
+\item \textbf{GPS device}: al fine di realizzare un'applicazione affidabile, come il contesto applicativo richiede, bisogna condurre uno studio dettagliato sulla precisione e il funzionamento della tecnologia GPS dei dispositivi mobili.
+\item \textbf{Usabilità}: gli utenti appartengono ad un'ampia fascia di età, per questo motivo occorre effettuare un test di usabilità del sistema e nell'eventualità modificare/riprogettare l'interfaccia.
+\item \textbf{Buffering}: come stabilito nei requisiti, in caso di rete congestionata o assente il sistema deve bufferizzare le richieste e informare l'utente. Bisogna progettare un algoritmo efficente e un'opportuna struttura dati, in modo tale da sfruttare al meglio le risorse limitate dei dispositivi mobili.
+\item \textbf{Ping dispositivo}: un'ulteriore informazione sugli utenti è data dallo stato del dispositivo, variabile tra: power-off, power-on e online. Per fare ciò, il server deve periodicamente "pingare" gli utenti. In futuro il progettista del server dovrà necessariamente implementare questa funzione.
+\item \textbf{Update dati}: a causa della mancanza di un server, i dati presenti nell'applicazione sono statici. Sappiamo invece che nel contesto applicativo i dati sono dinamici (vedi \ref{contesto}). L'applicazione dovrebbe richiedere l'aggiornamento dei dati in modo intelligente, ovvero bisogna progettare un algoritmo che, considerando il numero di utenti all'interno del sistema e lo stato della rete, determi la periodicità delle richieste per ogni utente.
+\end{itemize}
+Una volta realizzato interamente il sistema ideato dal team di ricerca (vedi \ref{contesto}), questa applicazione svolgerà un ruolo cruciale nella ricerca e assistenza delle vittime di un disastro ambientale e/o umano, contribuendo in generale ad aumentare la resilienza della comunità nei luoghi in cui tale progetto sarà implementato.
